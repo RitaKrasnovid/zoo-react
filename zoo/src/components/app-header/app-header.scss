@@ -4,46 +4,75 @@
 .app-header {
   background: $mineShaft;
 
-  .app-header_nav {
-    min-height: 50px;
+  .app-header__nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 0 80px;
+    padding: 15px 10px;
+    transition: all .2s;
+    @include for-size(md) {
+      padding: 15px 40px;
+    }
+    @include for-size(lg) {
+      padding: 15px 80px;
+    }
   }
-  
-  .app-header__logo--nav-home {
+
+  .app-header__logo--nav-home {   //TODO: not clear name
     color: $white;
     font-size: 20px;
     text-decoration: none;
     font-weight: bold;
-  
+
     &:hover {
       color: $nobel;
     }
   }
-  
+
   .app-header__list {
     padding: 0;
     margin: 0;
     list-style-type: none;
     display: none;
+    align-items: center;
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      margin-top: 20px;
+
+      @include for-size(lg) {
+        flex-direction: row;
+        margin-top: 0;
+      }
+    }
   
     @include for-size(lg) {
       display: flex;
     }
   }
-  
+
   .app-header__item {
-    margin-left: 15px;
+    margin-top: 15px;
+
+    @include for-size(lg) {
+      margin-top: 0;
+      margin-left: 15px;
+    }
   }
-  
+
   .app-header__nav-link {
     text-decoration: none;
     color: $white;
   
     &:hover {
       color: $nobel;
+    }
+  }
+
+  .toggle {
+    @include for-size(lg) {
+      display: none;
     }
   }
 }
