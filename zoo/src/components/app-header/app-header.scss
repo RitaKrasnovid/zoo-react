@@ -2,7 +2,7 @@
 @import '../../assets/styles/colors';
 
 .app-header {
-  background: $mineShaft;
+  background: $mineshaft-color;
 
   .app-header__nav {
     display: flex;
@@ -18,13 +18,13 @@
   }
 
   .app-header__logo--nav-home {   //TODO: not clear name
-    color: $white;
+    color: $white-color;
     font-size: 20px;
     text-decoration: none;
     font-weight: bold;
 
     &:hover {
-      color: $nobel;
+      color: $nobel-color;
     }
   }
 
@@ -63,10 +63,10 @@
 
   .app-header__nav-link {
     text-decoration: none;
-    color: $white;
+    color: $white-color;
   
     &:hover {
-      color: $nobel;
+      color: $nobel-color;
     }
   }
 
