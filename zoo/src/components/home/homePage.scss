@@ -1,0 +1,16 @@
+@import '../../assets/styles/breakpoints';
+@import '../../assets/styles/colors';
+
+.home {
+  width: 100%;
+  height: 100vh;
+  background: $porcelain-color;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  & .home__greeting {
+    color: $mineshaft-color;
+  }
+}
