@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Hamburger from '../hamburger';
 
+import { Link } from 'react-router-dom';
+
 import './app-header.scss';
 
 export default class AppHeader extends Component {
@@ -23,30 +25,30 @@ export default class AppHeader extends Component {
       <header className='app-header'>
         <nav className='app-header__nav'>
           <div className='app-header__logo'>
-            <a className='app-header__logo--nav-home' href='/'>
+            <Link className='app-header__logo--nav-home' to='/'>
               Super zoo
-            </a>
+            </Link>
           </div>
           <ul className={`app-header__list ${show ? 'show' : ''}`}>
             <li className='app-header__item'>
-              <a className='app-header__nav-link' href='/'>
+              <Link className='app-header__nav-link' to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className='app-header__item'>
-              <a className='app-header__nav-link' href='/'>
+              <Link className='app-header__nav-link' to="/animals">
                 Animals
-              </a>
+              </Link>
             </li>
             <li className='app-header__item'>
-              <a className='app-header__nav-link' href='/'>
+              <Link className='app-header__nav-link' to="/news">
                 News
-              </a>
+              </Link>
             </li>
             <li className='app-header__item'>
-              <a className='app-header__nav-link' href='/'>
+              <Link className='app-header__nav-link' to="/about">
                 About Zoo
-              </a>
+              </Link>
             </li>
           </ul>
           <Hamburger onToggleNav={this.onToggleNav} show={show} />

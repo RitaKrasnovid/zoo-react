@@ -1,3 +1,3 @@
-import Animals from './animals';
+import AnimalsPage from './animals';
 
-export default Animals;
+export default AnimalsPage;
