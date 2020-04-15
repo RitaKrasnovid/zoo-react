@@ -19,13 +19,13 @@
     box-shadow: 0 0 15px $nobel-color;
   }
 
-  .card__image {
+  &__image {
     width: 100%;
     height: 100%;
     border-radius: 5px;
   }
 
-  .card__title {
+  &__title {
     position: absolute;
     display: flex;
     align-items: center;

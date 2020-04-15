@@ -8,11 +8,11 @@
   align-items: center;
   flex-direction: column;
 
-  .home__greeting {
+  &__greeting {
     color: $mineshaft-color;
   }
 
-  .home__image {
+  &__image {
     flex: 1 1 auto;
   }
 }

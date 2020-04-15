@@ -4,7 +4,7 @@ import "./card.scss";
 
 const Card = ({id, name}) => {
   return (
-    <Link className="card" to={`/${id}`}>
+    <Link className="card" to={`/animals/${id}`}>
       <img src="./images/tiger.jpg" alt={name} className="card__image" />
       <header className="card__title">{name}</header>
     </Link>
