@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AppHeader from "../app-header";
 import HomePage from '../../pages/home';
 import AnimalsPage from '../../pages/animals';
+import AnimalDetails from '../animal-details';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -14,8 +15,16 @@ export default class App extends Component {
       <div className="app">
         <Router>
           <AppHeader />
-          <Route path="/" component={HomePage} exact/>
-          <Route path="/animals" component={AnimalsPage} />
+          <Route path="/" component={HomePage} exact />
+          <Route path="/animals" component={AnimalsPage} exact />
+          <Route path="/animals/:id"
+            render={({match}) => {
+              const id = match.params.id;
+
+              return <AnimalDetails id={id} />
+            }}
+          
+          />
         </Router>
       </div>
     );
