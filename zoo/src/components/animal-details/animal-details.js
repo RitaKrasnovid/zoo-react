@@ -1,18 +1,17 @@
 import React from "react";
+import SectionLayout from "../section-layout";
 
 import "./animal-details.scss";
 
 const AnimalDetails = ({ animal }) => {
-  const {name, description} = animal;
+  const { name, description } = animal;
 
   return (
     <div className="details">
-      <div className="details__content">
-        <section className="details__section">
-          <header className="details__header">{name}</header>
-          <article className="details__description">{description}</article>
-        </section>
-      </div>
+      <SectionLayout>
+        <header className="details__header">{name}</header>
+        <article className="details__description">{description}</article>
+      </SectionLayout>
     </div>
   );
 };
