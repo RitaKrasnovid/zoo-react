@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import AppHeader from "../app-header";
 import HomePage from '../../pages/home';
 import AnimalsPage from '../../pages/animals';
+import NewsPage from '../../pages/news';
+
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -16,6 +18,7 @@ export default class App extends Component {
           <AppHeader />
           <Route path="/" component={HomePage} exact/>
           <Route path="/animals" component={AnimalsPage} />
+          <Route path="/news" component={NewsPage} />
         </Router>
       </div>
     );
