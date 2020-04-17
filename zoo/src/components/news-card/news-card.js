@@ -24,7 +24,7 @@ export default class NewsCard extends Component {
         <div className="newsCard__date">{date}</div>
         <div className="newsCard__title">{title}</div>
         <div className="newsCard__content">
-          <img src="./images/elefant.jpg" className="newsCard__image" />
+          <img src="./images/elefant.jpg" className="newsCard__image" alt="elefant" />
           <div
             className={`newsCard__showMoreLink ${hide ? "hide" : ""}`}
             onClick={this.onShowMore}
