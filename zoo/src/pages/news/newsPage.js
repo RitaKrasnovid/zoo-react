@@ -1,11 +1,12 @@
 import React from "react";
+import NewsList from "../../components/news-list";
 
-import './newsPage.scss';
+import "./newsPage.scss";
 
-const NewsPage = () => {
+const NewsPage = ({ news }) => {
   return (
     <div className="news">
-      <h1 className="news__title">Super ZOO news</h1>
+      <NewsList news={news} />
     </div>
   );
 };
