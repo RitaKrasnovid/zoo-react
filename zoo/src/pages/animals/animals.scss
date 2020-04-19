@@ -1,31 +1,49 @@
 @import '../../assets/styles/colors';
+@import '../../assets/styles/breakpoints';
 
 .animals {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: $forest-green-color;
+  padding: 230px 0;
+  background: url('../../assets/images/cat.jpg');
 
   &__title {
-    color: $mineshaft-color;
-  }
-
-  &__section {
+    color: $white-color;
+    font-size: 18px;
+    text-transform: uppercase;
+    background: $forest-green-color;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 15px;
   }
 
   &__sectionHeader {
     display: flex;
     justify-content: space-around;
-    width: 60%;
     margin: 20px 0;
+    padding: 20px;
+    background: rgba(35, 35, 35, 0.4);
   }
 
-  &__sectionLink {
-    color: $mineshaft-color;
+  &__headerButton {
+    cursor: pointer;
+    color: $white-color;
+    text-transform: uppercase;
     font-size: 20px;
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .round-button {
+      display: none;
+    }
+
+    @include for-size(md) {
+      .round-button {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
   }
 }

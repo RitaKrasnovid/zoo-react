@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SectionLayout from "../../components/section-layout";
 import AnimalsList from "../../components/animals-list";
 import RoundButton from "../../components/round-button";
 import ApiService from '../../services/api-service';
@@ -37,28 +38,28 @@ export default class AnimalsPage extends Component {
 
     return (
       <div className="animals">
-        <h1 className="animals__title">Animals of our ZOO</h1>
-        <section className="animals__section">
+        <SectionLayout>
+          <h1 className="animals__title">Animals of our ZOO</h1>
           <header className="animals__sectionHeader">
-            <div className="animals__sectionLink">
-              <RoundButton name={"bird"} onToggle={ ()=>console.log('bird') } />
+            <div className="animals__headerButton" onClick={ ()=>console.log('bird') }>
+              <RoundButton name={"bird"} />
               Birds
             </div>
-            <div className="animals__sectionLink">
-              <RoundButton name={"mammal"}  onToggle={ ()=>console.log('mammal') }/>
+            <div className="animals__headerButton" onClick={ ()=>console.log('mammal') }>
+              <RoundButton name={"mammal"} />
               Mammals
             </div>
-            <div className="animals__sectionLink">
-              <RoundButton name={"fish"}  onToggle={ ()=>console.log('fish') }/>
+            <div className="animals__headerButton" onClick={ ()=>console.log('fish') }>
+              <RoundButton name={"fish"} />
               Fish
             </div>
-            <div className="animals__sectionLink">
-              <RoundButton name={"reptile"}  onToggle={ ()=>console.log('reptile') }/>
+            <div className="animals__headerButton" onClick={ ()=>console.log('reptile') }>
+              <RoundButton name={"reptile"} />
               Reptiles
             </div>
           </header>
           <AnimalsList animals={animals} />
-        </section>
+        </SectionLayout>
       </div>
     );
   }
