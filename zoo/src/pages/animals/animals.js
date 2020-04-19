@@ -1,19 +1,40 @@
 import React, { Component } from "react";
 import AnimalsList from "../../components/animals-list";
 import RoundButton from "../../components/round-button";
+import ApiService from '../../services/api-service';
 
 import "./animals.scss";
 
 export default class AnimalsPage extends Component {
-  animals = [
-    { id: 1, name: "First" },
-    { id: 2, name: "Second" },
-    { id: 3, name: "Second" },
-    { id: 4, name: "Second" },
-    { id: 5, name: "Second" }
-  ];
+  apiService = new ApiService();
+
+  state = {
+    animals: [],
+  };
+
+  constructor() {
+    super();
+    this.updateAnimalsList();
+  };
+
+  updateAnimalsList() {
+    this.apiService.getAllAnimals().then(data => {
+      this.setState(() => {
+        return {
+          animals: data.map(animal => {
+            return {
+              name: animal.title,
+              ...animal,
+            }
+          })
+        }
+      });
+    })
+  };
 
   render() {
+    const { animals } = this.state;
+
     return (
       <div className="animals">
         <h1 className="animals__title">Animals of our ZOO</h1>
@@ -36,7 +57,7 @@ export default class AnimalsPage extends Component {
               Reptiles
             </div>
           </header>
-          <AnimalsList animals={this.animals} />
+          <AnimalsList animals={animals} />
         </section>
       </div>
     );

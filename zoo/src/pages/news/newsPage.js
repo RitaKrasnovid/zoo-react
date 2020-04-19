@@ -1,14 +1,37 @@
 import React, { Component } from "react";
 import SectionLayout from "../../components/section-layout";
 import NewsList from "../../components/news-list";
+import ApiService from '../../services/api-service';
 
 import "./newsPage.scss";
 
 const DEFAULT_LIST_SIZE = 3;
 
 export default class NewsPage extends Component {
+  apiService = new ApiService();
+
   state = {
     maxListSize: DEFAULT_LIST_SIZE,
+    news: [],
+  };
+
+  constructor() {
+    super();
+    this.updateNewsList();
+  };
+
+  updateNewsList() {
+    this.apiService.getAllNews().then(data => {
+      this.setState(() => {
+        return {
+          news: data.map(n => {
+            return {
+              ...n,
+            }
+          })
+        }
+      });
+    })
   };
 
   loadMore = () => {
@@ -21,7 +44,7 @@ export default class NewsPage extends Component {
 
   render() {
     const { maxListSize } = this.state;
-    const { news } = this.props;
+    const { news } = this.state;
 
     const renderedNews = news.slice(0, maxListSize);
 
