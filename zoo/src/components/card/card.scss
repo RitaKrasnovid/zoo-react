@@ -1,0 +1,43 @@
+@import '../../assets/styles/breakpoints';
+@import '../../assets/styles/colors';
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  background: $white-color;
+  box-shadow: 0 0 8px $nobel-color;
+
+  @include for-size(lg) {
+    width: 400px;
+    height: 285px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2px $porcelain-color;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  &__title {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    background: $mineshaft-color;
+    opacity: 0.5;
+    text-transform: uppercase;
+    color: $white-color;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

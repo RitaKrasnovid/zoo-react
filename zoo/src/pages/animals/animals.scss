@@ -1,0 +1,31 @@
+@import '../../assets/styles/colors';
+
+.animals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $forest-green-color;
+
+  &__title {
+    color: $mineshaft-color;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__sectionHeader {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: 20px 0;
+  }
+
+  &__sectionLink {
+    color: $mineshaft-color;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

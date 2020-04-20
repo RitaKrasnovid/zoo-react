@@ -9,7 +9,7 @@
   position: relative;
   outline: inherit;
 
-  .toggle__hamburger {
+  &__hamburger {
     cursor: pointer;
 
     & span {
