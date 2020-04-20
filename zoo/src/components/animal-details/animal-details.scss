@@ -1,0 +1,24 @@
+@import "../../assets/styles/colors";
+
+.details {
+  display: flex;
+  padding: 230px 0;
+  background: url('../../assets/images/giraffe.jpg');
+
+  &__header {
+    color: $white-color;
+    font-size: 18px;
+    text-transform: uppercase;
+    background: $nepal-color;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &__description {
+    margin: 25px 0;
+    padding: 15px 50px 15px 15px;
+    background: rgba(240, 241, 242, 0.6);
+    line-height: 1.5;
+  }
+}
