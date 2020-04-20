@@ -5,26 +5,29 @@ import "./card.scss";
 export default class Card extends Component {
   state = {
     imageUrl: './images/default-image.png',
+    // images: this.props.images || null,
   };
 
   constructor() {
     super();
-
+    // this.updateImage();
   }
 
-  // if (images[0].data.data) {
-  //   const blob = new Blob(images[0].data.data, { type: 'image/jpg' });
+  // updateImage() {
+  //   if (this.images[0].data.data) {
+  //     const blob = new Blob(this.images[0].data.data, { type: 'image/jpg' });
 
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(blob);
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(blob);
 
-  //   reader.onload = () => {
-  //     this.setState(({imageUrl}) => {
-  //       return {
-  //         imageUrl: reader.result,
-  //       }
-  //     });
-  //   };
+  //     reader.onload = () => {
+  //       this.setState(() => {
+  //         return {
+  //           imageUrl: reader.result,
+  //         }
+  //       });
+  //     };
+  //   }
   // }
 
   render() {

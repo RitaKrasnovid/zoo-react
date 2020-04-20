@@ -13,11 +13,11 @@ export default class AnimalDetails extends Component {
 
   constructor() {
     super();
-    this.updateAnimalInfo()
+    this.updateAnimalInfo(3);
   }
 
-  updateAnimalInfo() {
-    this.apiService.getAnimalById(1).then(data => {
+  updateAnimalInfo(id) {
+    this.apiService.getAnimalById(id).then(data => {
       this.setState(() => {
         return {
           animal: {
