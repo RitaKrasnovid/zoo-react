@@ -47,13 +47,18 @@ export default class NewsPage extends Component {
     const { news } = this.state;
 
     const renderedNews = news.slice(0, maxListSize);
+    let classButton = 'newsList__button';
+
+    if(news.length === 0 || news.length === renderedNews.length) {
+      classButton += ' hide';
+    }
 
     return (
       <div className="news">
         <SectionLayout>
           <header className="newsList__cardHeader">Articles</header>
           <NewsList news={renderedNews} />
-          <button onClick={this.loadMore} className="newsList__button">Load more</button>
+          <button onClick={this.loadMore} className={classButton}>Load more</button>
         </SectionLayout>
       </div>
     );
