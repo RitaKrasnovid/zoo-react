@@ -3,11 +3,12 @@ import AppHeader from "../app-header";
 import HomePage from '../../pages/home';
 import AnimalsPage from '../../pages/animals';
 import AnimalDetails from '../animal-details';
+import NewsPage from "../../pages/news";
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import '../../assets/styles/_normalize.scss';
-import './app.scss';
+import "../../assets/styles/_normalize.scss";
+import "./app.scss";
 
 export default class App extends Component {
   state = {
@@ -23,25 +24,38 @@ export default class App extends Component {
       { id: '4', name: "Second" },
       { id: '5', name: "Second" }
     ],
-  }
-  render() {
-    const {animals} = this.state;
+    news: [
+      {
+        id: "1",
+        date: '2020-04-17',
+        title: "Рождение слоненка",
+        description:
+          "В нашем зоопарке впервые родился новый член слоновей семьи. Маленький Элик родился в ночь с субботы на воскресенье."
+      },
+      { id: "2", title: "Second" },
+      { id: "3", title: "Second" },
+    ]
+  };
 
-    return(
+  render() {
+    const { news, animals } = this.state;
+
+    return (
       <div className="app">
         <Router>
           <AppHeader />
           <Route path="/" component={HomePage} exact />
-          <Route path="/animals" exact render={() => <AnimalsPage animals={animals}/>}/>
+          <Route path="/animals" exact render={() => <AnimalsPage animals={animals} />} />
           <Route path="/animals/:id"
-            render={({match}) => {
+            render={({ match }) => {
               const id = match.params.id;
               const animal = animals.filter(an => an.id === id); //TODO temp solution
 
               return <AnimalDetails animal={animal[0]} />
             }}
-          
+
           />
+          <Route path="/news" render={() => <NewsPage news={news} />} />
         </Router>
       </div>
     );
