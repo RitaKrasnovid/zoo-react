@@ -1,0 +1,19 @@
+@import '../../assets/styles/breakpoints';
+
+.sectionLayout {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90%;
+  align-content: stretch;
+  background: rgba(35, 35, 35, 0.5);
+
+  @include for-size(lg) {
+    width: 800px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
