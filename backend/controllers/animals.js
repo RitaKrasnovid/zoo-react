@@ -22,24 +22,39 @@ const list = (req, res, next) => Animal
   .then(result => res.status(200).send(result))
   .catch(error => next(error));
 
-const filterByNameContainsValue = (req, res, next) => {
-  const value = req.params.value.toLowerCase();
+// const filterByNameContainsValue = (req, res, next) => {
+//   const value = req.params.value.toLowerCase();
 
-  Animal.findAll({
+//   Animal.findAll({
+//     where: {
+//       title: {
+//         $like: `%${value}%`,
+//       },
+//     },
+//   })
+//     .then((result) => {
+//       res.status(200).send(result);
+//     })
+//     .catch(error => next(error));
+// };
+
+const getById = (req, res, next) => {
+  const animalId = req.params.id;
+
+  console.log('arfvfavv', animalId)
+
+  Animal.find({
     where: {
-      title: {
-        $like: `%${value}%`,
-      },
+      id: animalId,
     },
   })
-    .then((result) => {
-      res.status(200).send(result);
-    })
+    .then(result => res.status(200).send(result))
     .catch(error => next(error));
 };
 
 module.exports = {
   create,
   list,
-  filterByNameContainsValue,
+  // filterByNameContainsValue,
+  getById,
 };
