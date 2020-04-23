@@ -20,21 +20,21 @@ export default class NewsCard extends Component {
     const { hide } = this.state;
 
     return (
-      <div className="newsCard">
-        <div className="newsCard__date">{date}</div>
-        <div className="newsCard__title">{title}</div>
-        <div className="newsCard__content">
-          <img src="./images/elefant.jpg" className="newsCard__image" alt="elefant" />
+      <div className="news-card">
+        <div className="news-card__date">{date}</div>
+        <div className="news-card__title">{title}</div>
+        <div className="news-card__content">
+          <img src="./images/elefant.jpg" className="news-card__image" alt="elefant" />
           <div
-            className={`newsCard__showMoreLink ${hide ? "hide" : ""}`}
+            className={`news-card__showMoreLink ${hide ? "hide" : ""}`}
             onClick={this.onShowMore}
           >
             More...
           </div>
-          <div className={`newsCard__description ${hide ? "show" : ""}`}>
+          <div className={`news-card__description ${hide ? "show" : ""}`}>
             {description}
             <div
-              className={`newsCard__hideLink ${hide ? "show" : ""}`}
+              className={`news-card__hideLink ${hide ? "show" : ""}`}
               onClick={this.onShowMore}
             >
               Hide

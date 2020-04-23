@@ -7,14 +7,14 @@ const NewsList = ({ news }) => {
     const { id } = item;
 
     return (
-      <li key={id} className="newsList__card">
+      <li key={id} className="news-list__card">
         <NewsCard {...item} />
       </li>
     );
   });
 
   return (
-      <ul className="newsList">{elements}</ul>
+      <ul className="news-list">{elements}</ul>
   );
 };
 

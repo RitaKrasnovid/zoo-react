@@ -17,14 +17,14 @@ export default class App extends Component {
         <Router>
           <AppHeader />
           <Route path="/" component={HomePage} exact />
-          <Route path="/animals" exact render={() => <AnimalsPage />} />
+          <Route path="/animals" component={AnimalsPage} exact/>
           <Route path="/animals/:id"
             render={({ match }) => {
               return <AnimalDetails id={match.params.id} />
             }}
 
           />
-          <Route path="/news" render={() => <NewsPage />} />
+          <Route path="/news" component={NewsPage} />
         </Router>
       </div>
     );

@@ -3,7 +3,7 @@ import SectionLayout from "../../components/section-layout";
 import NewsList from "../../components/news-list";
 import ApiService from '../../services/api-service';
 
-import "./newsPage.scss";
+import "./news.scss";
 
 const DEFAULT_LIST_SIZE = 3;
 
@@ -47,7 +47,7 @@ export default class NewsPage extends Component {
     const { news } = this.state;
 
     const renderedNews = news.slice(0, maxListSize);
-    let classButton = 'newsList__button';
+    let classButton = 'news__button';
 
     if(news.length === 0 || news.length === renderedNews.length) {
       classButton += ' hide';
@@ -56,7 +56,7 @@ export default class NewsPage extends Component {
     return (
       <div className="news">
         <SectionLayout>
-          <header className="newsList__cardHeader">Articles</header>
+          <header className="news__header">Articles</header>
           <NewsList news={renderedNews} />
           <button onClick={this.loadMore} className={classButton}>Load more</button>
         </SectionLayout>

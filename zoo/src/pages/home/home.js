@@ -1,6 +1,6 @@
 import React from "react";
 
-import './homePage.scss';
+import './home.scss';
 
 const HomePage = () => {
   return (

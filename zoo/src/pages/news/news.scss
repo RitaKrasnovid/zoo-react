@@ -1,0 +1,36 @@
+@import '../../assets/styles/colors';
+
+.news {
+  display: flex;
+  flex-direction: column;
+  padding: 230px 0;
+  background: url('../../assets/images/butterfly.jpg');
+
+  .hide {
+    display: none;
+  }
+
+  &__header {
+    color: $white-color;
+    font-size: 18px;
+    text-transform: uppercase;
+    background: $golden-grass;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &__button {
+    min-width: 130px;
+    height: 40px;
+    color: $white-color;
+    font-weight: bold;
+    background: $golden-grass;
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+      box-shadow: 0 0 0 2px $porcelain-color;
+    }
+  }
+}

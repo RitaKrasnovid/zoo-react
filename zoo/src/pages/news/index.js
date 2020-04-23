@@ -1,3 +1,3 @@
-import NewsPage from './newsPage';
+import NewsPage from './news';
 
 export default NewsPage;

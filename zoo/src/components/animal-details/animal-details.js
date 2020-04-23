@@ -16,7 +16,7 @@ export default class AnimalDetails extends Component {
     this.updateAnimalInfo(3);
   }
 
-  updateAnimalInfo(id) {
+  updateAnimalInfo(id) {  // TODO: temp solution, data will get from store
     this.apiService.getAnimalById(id).then(data => {
       this.setState(() => {
         return {
