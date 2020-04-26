@@ -20,7 +20,7 @@ export default class App extends Component {
           <Route path="/animals" component={AnimalsPage} exact/>
           <Route path="/animals/:id"
             render={({ match }) => {
-              return <AnimalDetails id={match.params.id} />
+              return <AnimalDetails id={+match.params.id} />
             }}
           />
           <Route path="/news" component={NewsPage} />

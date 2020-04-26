@@ -11,10 +11,15 @@ const initialState = {
   }]
 };
 
-const animals = (state = initialState, action) => {
+const animals = (state = initialState.animals, action) => {
   switch (action.type) {
     case RECEIVE_ANIMALS:
-      return state.animals;
+      return state.map(animal => {
+        return {
+          name: animal.title,
+          ...animal,
+        }
+      });
     default:
       return state;
   }
@@ -75,8 +80,9 @@ export default combineReducers({
   animalsOrder,
 })
 
-export const getAnimal = (state, id) =>
-  state.byId[id];
+export const getAnimal = (state, id) => {
+  return id ? state.byId[id] : {};
+}
 
 export const getAnimalByClass = (state) =>
   state.animalsOrder.map(order => order);
