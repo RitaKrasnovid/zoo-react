@@ -1,0 +1,2 @@
+export const RECEIVE_ANIMALS = 'RECEIVE_ANIMALS';
+export const GET_NEWS_LIST = 'GET_NEWS_LIST';

@@ -41,8 +41,6 @@ const list = (req, res, next) => Animal
 const getById = (req, res, next) => {
   const animalId = req.params.id;
 
-  console.log('arfvfavv', animalId)
-
   Animal.find({
     where: {
       id: animalId,

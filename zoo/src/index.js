@@ -1,5 +1,18 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from './components/app';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import rootReducer from './store/reducers';
+import App from './containers/app';
+import { getAllAnimals } from './store/actions';
 
-ReactDom.render(<App />, document.getElementById('root'));
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+store.dispatch(getAllAnimals());
+
+ReactDom.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'));
