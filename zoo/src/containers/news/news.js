@@ -1,37 +1,17 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { getAllNews } from '../../store/actions';
+
 import SectionLayout from "../../components/section-layout";
 import NewsList from "../../components/news-list";
-import ApiService from '../../services/api-service';
 
 import "./news.scss";
 
 const DEFAULT_LIST_SIZE = 3;
 
-export default class NewsPage extends Component {
-  apiService = new ApiService();
-
+class NewsPage extends Component {
   state = {
     maxListSize: DEFAULT_LIST_SIZE,
-    news: [],
-  };
-
-  constructor() {
-    super();
-    this.updateNewsList();
-  };
-
-  updateNewsList() {
-    this.apiService.getAllNews().then(data => {
-      this.setState(() => {
-        return {
-          news: data.map(n => {
-            return {
-              ...n,
-            }
-          })
-        }
-      });
-    })
   };
 
   loadMore = () => {
@@ -42,9 +22,15 @@ export default class NewsPage extends Component {
     });
   };
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(getAllNews());
+  }
+
   render() {
     const { maxListSize } = this.state;
-    const { news } = this.state;
+    const { news } = this.props;
 
     const renderedNews = news.slice(0, maxListSize);
     let classButton = 'news__button';
@@ -64,3 +50,14 @@ export default class NewsPage extends Component {
     );
   }
 }
+
+NewsPage.defaultProps = {
+  news: [],
+};
+
+
+const mapStateToProps = state => ({
+  news: state.news.getAll,
+});
+
+export default connect(mapStateToProps)(NewsPage);

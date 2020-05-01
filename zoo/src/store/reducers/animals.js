@@ -4,7 +4,7 @@ import { RECEIVE_ANIMALS } from '../../constants/actionsType';
 const initialState = {
   animals: [{
     id: '',
-    name: 'test redux',
+    name: '',
     order: '',
     family: '',
     description: '',
@@ -31,7 +31,10 @@ const byId = (state = {}, action) => {
       return {
         ...state,
         ...action.animals.reduce((obj, animal) => {
-          obj[animal.id] = animal;
+          obj[animal.id] = {
+            name: animal.title,
+            ...animal,
+          };
 
           return obj;
         }, {})

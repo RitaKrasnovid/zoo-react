@@ -15,10 +15,6 @@ export default class ApiService {
     return this.getResourse('animals');
   }
 
-  getAnimalById(id) {
-    return this.getResourse(`animals/${id}`);
-  }
-
   getAllNews() {
     return this.getResourse('news');
   }

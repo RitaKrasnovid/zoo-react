@@ -8,8 +8,19 @@ const receiveAnimals = animals => ({
   animals,
 });
 
+const receiveNews = news => ({
+  type: types.RECEIVE_NEWS,
+  news,
+});
+
 export const getAllAnimals = () => dispatch => {
   apiService.getAllAnimals().then(data => {
     dispatch(receiveAnimals(data));
+  });
+}
+
+export const getAllNews = () => dispatch => {
+  apiService.getAllNews().then(data => {
+    dispatch(receiveNews(data));
   });
 }
