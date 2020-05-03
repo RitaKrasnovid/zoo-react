@@ -18,4 +18,8 @@ export default class ApiService {
   getAllNews() {
     return this.getResourse('news');
   }
+
+  getAnimalsByOrder(order = '') {
+    return this.getResourse(`animals/${order}`);
+  }
 }

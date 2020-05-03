@@ -19,6 +19,12 @@ export const getAllAnimals = () => dispatch => {
   });
 }
 
+export const filterAnimalsByOrder = (order) => dispatch => {
+  apiService.getAnimalsByOrder(order).then(data => {
+    dispatch(receiveAnimals(data));
+  });
+}
+
 export const getAllNews = () => dispatch => {
   apiService.getAllNews().then(data => {
     dispatch(receiveNews(data));

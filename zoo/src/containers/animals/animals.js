@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getAllAnimals } from '../../store/actions';
+import { getAllAnimals, filterAnimalsByOrder } from '../../store/actions';
 
 import SectionLayout from "../../components/section-layout";
 import AnimalsList from "../../components/animals-list";
 import RoundButton from "../../components/round-button";
 
 import "./animals.scss";
+
+const animalsOrder = {
+  BIRDS: 'Bird',
+  MAMMAL: 'Mammal',
+  FISH: 'Fish',
+  REPTILIA: 'Reptilia'
+};
 
 class AnimalsPage extends Component {
   componentDidMount() {
@@ -16,26 +23,26 @@ class AnimalsPage extends Component {
   }
 
   render() {
-    const { animals } = this.props;
+    const { animals, dispatch } = this.props;
 
     return (
       <div className="animals">
         <SectionLayout>
           <h1 className="animals__title">Animals of our ZOO</h1>
           <header className="animals__sectionHeader">
-            <div className="animals__headerButton" onClick={() => console.log('bird')}>
+            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.BIRDS))}>
               <RoundButton name={"bird"} />
                 Birds
               </div>
-            <div className="animals__headerButton" onClick={() => console.log('mammal')}>
+            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.MAMMAL))}>
               <RoundButton name={"mammal"} />
                 Mammals
               </div>
-            <div className="animals__headerButton" onClick={() => console.log('fish')}>
+            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.FISH))}>
               <RoundButton name={"fish"} />
                 Fish
               </div>
-            <div className="animals__headerButton" onClick={() => console.log('reptile')}>
+            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.REPTILIA))}>
               <RoundButton name={"reptile"} />
                 Reptiles
               </div>
