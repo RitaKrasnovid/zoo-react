@@ -1,5 +1,4 @@
-const animalsController = require('../controllers').animals;
-const newsController = require('../controllers').news;
+const { animals: animalsController, news: newsController } = require('../controllers');
 
 module.exports = (app) => {
   app.get('/api/', (req, res) => res.status(200).send({
