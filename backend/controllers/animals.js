@@ -1,10 +1,7 @@
-const models = require('../models');
-
-const Animal = models.Animals;
-const Image = models.Images;
+const { Animals, Images } = require('../models');
 
 const create = (req, res) => {
-  return Animal
+  return Animals
     .create({
       title: req.body.title,
     })
@@ -12,10 +9,10 @@ const create = (req, res) => {
     .catch(error => res.status(400).send(error));
 };
 
-const list = (req, res, next) => Animal
+const list = (req, res, next) => Animals
   .findAll({
     include: [{
-      model: Image,
+      model: Images,
       as: 'images',
     }],
   })
@@ -25,7 +22,7 @@ const list = (req, res, next) => Animal
 // const filterByNameContainsValue = (req, res, next) => {
 //   const value = req.params.value.toLowerCase();
 
-//   Animal.findAll({
+//   Animals.findAll({
 //     where: {
 //       title: {
 //         $like: `%${value}%`,
@@ -39,13 +36,11 @@ const list = (req, res, next) => Animal
 // };
 
 const getById = (req, res, next) => {
-  const animalId = req.params.id;
+  const { id } = req.params;
 
-  console.log('arfvfavv', animalId)
-
-  Animal.find({
+  Animals.find({
     where: {
-      id: animalId,
+      id,
     },
   })
     .then(result => res.status(200).send(result))

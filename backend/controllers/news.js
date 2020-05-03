@@ -1,7 +1,4 @@
-const models = require('../models');
-
-const News = models.News;
-const Image = models.Images;
+const { News, Images } = require('../models');
 
 const create = (req, res) => {
   return News
@@ -17,7 +14,7 @@ const create = (req, res) => {
 const list = (req, res, next) => News
   .findAll({
     include: [{
-      model: Image,
+      model: Images,
       as: 'images',
     }],
   })
@@ -31,7 +28,7 @@ const getMainNews = (req, res, next) => News
     ],
     limit: 3,
     include: [{
-      model: Image,
+      model: Images,
       as: 'images',
       required: false,
     }],
@@ -40,11 +37,11 @@ const getMainNews = (req, res, next) => News
   .catch(error => next(error));
 
 const getById = (req, res, next) => {
-  const newsId = req.params.id;
+  const { id } = req.params;
 
   News.findAll({
     where: {
-      id: newsId,
+      id,
     },
   })
     .then(result => res.status(200).send(result))
