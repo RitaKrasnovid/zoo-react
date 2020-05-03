@@ -24,7 +24,7 @@ const list = (req, res, next) => News
 const getMainNews = (req, res, next) => News
   .findAll({
     order: [
-      ['updatedAt', 'DESC'],
+      ['createdAt', 'DESC'],
     ],
     limit: 3,
     include: [{
