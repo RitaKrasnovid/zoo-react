@@ -1,5 +1,6 @@
 @import '../../assets/styles/colors';
 @import '../../assets/styles/breakpoints';
+@import "../../assets/styles/functions";
 
 .animals {
   display: flex;
@@ -23,7 +24,7 @@
     justify-content: space-around;
     margin: 20px 0;
     padding: 20px;
-    background: rgba(35, 35, 35, 0.4);
+    background: opacity-color($mineshaft-color, 0.4);
   }
 
   &__headerButton {

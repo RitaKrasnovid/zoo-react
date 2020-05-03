@@ -1,7 +1,9 @@
 @import '../../assets/styles/colors';
+@import "../../assets/styles/functions";
+@import "../../assets/styles/mixins";
 
 .news-card {
-  background: rgba(35, 35, 35, 0.7);
+  background: opacity-color($mineshaft-color, 0.7);
   padding: 15px;
 
   &__date {
@@ -20,7 +22,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    box-shadow: 0 0 0 10px rgba(35, 35, 35, 0.6);
+    @include box-shadow(0 0 0 10px opacity-color($mineshaft-color, 0.6));
     margin: 30px 30px;
   }
 

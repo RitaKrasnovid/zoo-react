@@ -1,10 +1,10 @@
+@import '../../assets/styles/mixins';
+
 .animals-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  @include reset-list-style;
 
   &__card {
     margin: 10px;

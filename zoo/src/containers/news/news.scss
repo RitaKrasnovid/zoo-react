@@ -1,4 +1,5 @@
 @import '../../assets/styles/colors';
+@import "../../assets/styles/mixins";
 
 .news {
   display: flex;
@@ -30,7 +31,7 @@
     border-radius: 4px;
 
     &:hover {
-      box-shadow: 0 0 0 2px $porcelain-color;
+      @include box-shadow(0 0 0 2px $porcelain-color);
     }
   }
 }
