@@ -8,6 +8,7 @@ const initialState = {
     order: '',
     family: '',
     description: '',
+    images: [],
   }]
 };
 
@@ -58,7 +59,7 @@ const getAll = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ANIMALS:
       return action.animals.map(animal => {
-        return {
+         return {
           name: animal.title,
           ...animal,
         }

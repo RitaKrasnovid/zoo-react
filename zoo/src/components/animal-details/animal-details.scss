@@ -4,6 +4,7 @@
   display: flex;
   padding: 230px 0;
   background: url('../../assets/images/giraffe.jpg');
+  background-attachment: fixed;
 
   &__header {
     color: $white-color;
