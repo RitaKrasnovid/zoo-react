@@ -1,8 +1,12 @@
 @import '../../assets/styles/colors';
+@import '../../assets/styles/breakpoints';
 
 .news-card {
   background: rgba(35, 35, 35, 0.7);
   padding: 15px;
+  @include for-size(md) {
+    padding-right: 25px;
+  }
 
   &__date {
     color: $white-color;
@@ -12,8 +16,11 @@
 
   &__title {
     color: $golden-grass;
-    font-size: 30px;
+    font-size: 15px;
     text-transform: uppercase;
+    @include for-size(md) {
+      font-size: 30px;
+    }
   }
 
   &__image {
@@ -27,6 +34,10 @@
   &__content {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    @include for-size(md) {
+      flex-direction: row;
+    }
   }
 
   &__showMoreLink {
@@ -38,9 +49,14 @@
   &__description {
     display: none;
     color: $white-color;
-    font-size: 20px;
+    font-size: 13px;
+    line-height: 1.5;
     text-overflow: ellipsis;
     margin: 20px 0;
+    text-align: justify;
+    @include for-size(md) {
+      font-size: 20px;
+    }
   }
 
   &__hideLink {
