@@ -2,12 +2,9 @@ import React from "react";
 
 import "./round-button.scss";
 
-const RoundButton = ({ onToggle, name }) => {
+const RoundButton = ({ name }) => {
   return (
-    <button
-      className={`round-button ${name}`}
-      onClick={() => onToggle()}
-    ></button>
+    <button className={`round-button ${name}`}></button>
   );
 };
 

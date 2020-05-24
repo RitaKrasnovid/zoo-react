@@ -10,8 +10,8 @@
   box-shadow: 0 0 8px $nobel-color;
 
   @include for-size(lg) {
-    width: 400px;
-    height: 285px;
+    width: 270px;
+    height: 185px;
   }
 
   &:hover {
