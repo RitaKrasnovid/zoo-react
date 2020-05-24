@@ -3,7 +3,8 @@
 
 .card {
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
   border-radius: 5px;
   background: $white-color;

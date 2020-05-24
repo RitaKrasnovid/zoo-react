@@ -1,9 +1,9 @@
 @import "../../assets/styles/colors";
+@import '../../assets/styles/mixins';
 
 .details {
   display: flex;
-  padding: 230px 0;
-  background: url('../../assets/images/giraffe.jpg');
+  @include fixed-background('../../assets/images/giraffe.jpg', 200px);
 
   &__header {
     color: $white-color;

@@ -1,0 +1,5 @@
+@mixin fixed-background($url, $vertical-padding: 100px, $horizontal-padding: 0) {
+  padding: $vertical-padding $horizontal-padding;
+  background: url($url);
+  background-attachment: fixed;
+}
