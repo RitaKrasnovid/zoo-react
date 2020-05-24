@@ -1,22 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
 import SectionLayout from "../section-layout";
+import { getAllAnimals } from '../../store/actions';
 import { getAnimal } from '../../store/reducers/animals';
 
 import "./animal-details.scss";
 
-const AnimalDetails = ({ animal }) => {
-  const { name, description } = animal;
+class AnimalDetails extends Component {
+  componentDidMount() {
+    const { dispatch, id } = this.props;
 
-  return (
-    <div className="details">
-      <SectionLayout>
-        <header className="details__header">{name}</header>
-        <article className="details__description">{description}</article>
-      </SectionLayout>
-    </div>
-  );
+    dispatch(getAllAnimals());
+
+    getAnimal(id);
+  }
+
+
+  render() {
+    const { animal } = this.props;
+
+    return (
+      <div className="details">
+        <SectionLayout>
+          <header className="details__header">{animal.name}</header>
+          <article className="details__description">{animal.description}</article>
+        </SectionLayout>
+      </div>
+    );
+  }
 }
+
+AnimalDetails.defaultProps = {
+  animal: {name: 'Animal not found'},
+};
 
 const mapStateToProps = (state, { id }) => ({
   animal: getAnimal(state.animals, id),
