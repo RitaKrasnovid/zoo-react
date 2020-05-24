@@ -12,7 +12,7 @@ const animalsOrder = {
   BIRDS: 'Bird',
   MAMMAL: 'Mammal',
   FISH: 'Fish',
-  REPTILIA: 'Reptilia'
+  REPTILIA: 'Reptilia',
 };
 
 class AnimalsPage extends Component {
