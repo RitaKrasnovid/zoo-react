@@ -8,57 +8,15 @@ const initialState = {
     order: '',
     family: '',
     description: '',
+    images: [],
   }]
-};
-
-const animals = (state = initialState.animals, action) => {
-  switch (action.type) {
-    case RECEIVE_ANIMALS:
-      return state.map(animal => {
-        return {
-          name: animal.title,
-          ...animal,
-        }
-      });
-    default:
-      return state;
-  }
-};
-
-const byId = (state = {}, action) => {
-  switch (action.type) {
-    case RECEIVE_ANIMALS:
-      return {
-        ...state,
-        ...action.animals.reduce((obj, animal) => {
-          obj[animal.id] = {
-            name: animal.title,
-            ...animal,
-          };
-
-          return obj;
-        }, {})
-      }
-
-    default:
-      const { animalId } = action;
-
-      if (animalId) {
-        return {
-          ...state,
-          [animalId]: animals(state[animalId], action)
-        }
-      }
-
-      return state;
-  }
 };
 
 const getAll = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ANIMALS:
       return action.animals.map(animal => {
-        return {
+         return {
           name: animal.title,
           ...animal,
         }
@@ -68,7 +26,7 @@ const getAll = (state = [], action) => {
   }
 };
 
-const animalsOrder = (state = [], action) => {
+const animalsOrder = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_ANIMALS:
       return action.animals.map(animal => animal.order);
@@ -79,12 +37,15 @@ const animalsOrder = (state = [], action) => {
 
 export default combineReducers({
   getAll,
-  byId,
   animalsOrder,
 })
 
 export const getAnimal = (state, id) => {
-  return id ? state.byId[id] : {};
+  if(id) {
+    return state.getAll.find(element => element.id === id);
+  }
+
+  return {};
 }
 
 export const getAnimalByClass = (state) =>
