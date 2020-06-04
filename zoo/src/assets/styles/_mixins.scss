@@ -1,4 +1,3 @@
-
 @mixin box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
@@ -9,4 +8,10 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+@mixin fixed-background($url, $vertical-padding: 100px, $horizontal-padding: 0) {
+  padding: $vertical-padding $horizontal-padding;
+  background: url($url);
+  background-attachment: fixed;
 }

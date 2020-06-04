@@ -12,14 +12,14 @@ module.exports = {
       },
       data: {
         allowNull: false,
-        type: Sequelize.BLOB,
+        type: Sequelize.TEXT,
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
     });

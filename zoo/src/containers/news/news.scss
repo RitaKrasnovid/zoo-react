@@ -1,11 +1,15 @@
 @import '../../assets/styles/colors';
-@import "../../assets/styles/mixins";
+@import '../../assets/styles/breakpoints';
+@import '../../assets/styles/mixins';
 
 .news {
   display: flex;
   flex-direction: column;
-  padding: 230px 0;
-  background: url('../../assets/images/butterfly.jpg');
+  @include fixed-background('../../assets/images/butterfly.jpg', 20px);
+
+  @include for-size(lg) {
+    @include fixed-background('../../assets/images/butterfly.jpg', 200px);
+  }
 
   .hide {
     display: none;

@@ -23,6 +23,10 @@ const filterByOrder = (req, res, next) => {
   const { order } = req.params;
 
   Animals.findAll({
+    include: [{
+      model: Images,
+      as: 'images',
+    }],
     where: {
       order: {
         $like: order,

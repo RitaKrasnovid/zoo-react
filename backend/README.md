@@ -32,6 +32,10 @@ Generate new model and migrations
 
 `sequelize model:create --name User --attributes 'name:string email:string bio:text'`
 
+Generete new seeders
+
+`sequelize seed:generate --name demo-user`
+
 
 ## Tests
 
