@@ -7,8 +7,9 @@ module.exports = (app) => {
 
   app.get('/api/animals/', animalsController.list);
   app.post('/api/animals/', (req, res) => animalsController.create);
-  // app.get('/api/animals/:value', animalsController.filterByNameContainsValue);
-  app.get('/api/animals/:id', animalsController.getById);
+  app.get('/api/animals/:order', animalsController.filterByOrder);
+
+  app.get('/api/animals/:value', animalsController.filterByNameContainsValue);
 
   app.get('/api/news/', newsController.getMainNews);
 };

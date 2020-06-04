@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     data: {
-      type: DataTypes.BLOB,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   }, {});

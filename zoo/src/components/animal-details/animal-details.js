@@ -1,45 +1,41 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import SectionLayout from "../section-layout";
-import ApiService from '../../services/api-service';
+import { getAllAnimals } from '../../store/actions';
+import { getAnimal } from '../../store/reducers/animals';
 
 import "./animal-details.scss";
 
-export default class AnimalDetails extends Component {
-  apiService = new ApiService();
+class AnimalDetails extends Component {
+  componentDidMount() {
+    const { dispatch, id } = this.props;
 
-  state = {
-    animal: {},
-  };
+    dispatch(getAllAnimals());
 
-  constructor() {
-    super();
-    this.updateAnimalInfo(3);
+    getAnimal(id);
   }
 
-  updateAnimalInfo(id) {  // TODO: temp solution, data will get from store
-    this.apiService.getAnimalById(id).then(data => {
-      this.setState(() => {
-        return {
-          animal: {
-            name: data.title,
-            ...data,
-          },
-        }
-      });
-    })
-  };
 
   render() {
-    const { animal } = this.state;
-    const { name, description } = animal;
+    const { animal } = this.props;
 
     return (
       <div className="details">
         <SectionLayout>
-          <header className="details__header">{name}</header>
-          <article className="details__description">{description}</article>
+          <header className="details__header">{animal.name}</header>
+          <article className="details__description">{animal.description}</article>
         </SectionLayout>
       </div>
     );
   }
 }
+
+AnimalDetails.defaultProps = {
+  animal: {name: 'Animal not found'},
+};
+
+const mapStateToProps = (state, { id }) => ({
+  animal: getAnimal(state.animals, id),
+});
+
+export default connect(mapStateToProps)(AnimalDetails);

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import AppHeader from "../app-header";
-import HomePage from '../../pages/home';
-import AnimalsPage from '../../pages/animals';
-import AnimalDetails from '../animal-details';
-import NewsPage from "../../pages/news";
+import AppHeader from "../../components/app-header";
+import HomePage from '../home';
+import AnimalsPage from '../animals';
+import AnimalDetails from '../../components/animal-details';
+import NewsPage from "../news";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -20,9 +20,8 @@ export default class App extends Component {
           <Route path="/animals" component={AnimalsPage} exact/>
           <Route path="/animals/:id"
             render={({ match }) => {
-              return <AnimalDetails id={match.params.id} />
+              return <AnimalDetails id={+match.params.id} />
             }}
-
           />
           <Route path="/news" component={NewsPage} />
         </Router>

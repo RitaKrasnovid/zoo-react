@@ -1,13 +1,15 @@
 @import '../../assets/styles/breakpoints';
 @import '../../assets/styles/colors';
+@import "../../assets/styles/mixins";
 
 .card {
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
   border-radius: 5px;
   background: $white-color;
-  box-shadow: 0 0 8px $nobel-color;
+  @include box-shadow(0 0 8px $nobel-color);
 
   @include for-size(lg) {
     width: 270px;
@@ -15,12 +17,11 @@
   }
 
   &:hover {
-    box-shadow: 0 0 0 2px $porcelain-color;
+    @include box-shadow(0 0 0 2px $porcelain-color);
   }
 
   &__image {
     width: 100%;
-    height: 100%;
     border-radius: 5px;
   }
 
