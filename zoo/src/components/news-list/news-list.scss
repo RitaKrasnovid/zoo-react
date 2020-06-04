@@ -1,12 +1,11 @@
 @import '../../assets/styles/colors';
+@import '../../assets/styles/mixins';
 
 .news-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  @include reset-list-style;
 
   &__card {
     margin: 20px 0;

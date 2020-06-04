@@ -1,4 +1,5 @@
 @import "../../assets/styles/colors";
+@import "../../assets/styles/functions";
 @import '../../assets/styles/breakpoints';
 @import '../../assets/styles/mixins';
 
@@ -22,8 +23,8 @@
 
   &__description {
     margin: 25px 0;
-    padding: 15px;
-    background: rgba(240, 241, 242, 0.6);
+    padding: 15px 50px 15px 15px;
+    background: opacity-color($porcelain-color, 0.6);
     line-height: 1.5;
     font-size: 13px;
     text-align: justify;

@@ -1,4 +1,6 @@
 @import '../../assets/styles/breakpoints';
+@import '../../assets/styles/colors';
+@import "../../assets/styles/functions";
 
 .sectionLayout {
   flex-direction: column;
@@ -7,7 +9,7 @@
   margin: 0 auto;
   width: 90%;
   align-content: stretch;
-  background: rgba(35, 35, 35, 0.5);
+  background: opacity-color($mineshaft-color, 0.5);
 
   @include for-size(lg) {
     width: 800px;

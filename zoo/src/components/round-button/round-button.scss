@@ -1,4 +1,5 @@
 @import '../../assets/styles/colors';
+@import "../../assets/styles/mixins";
 
 .round-button {
   width: 62px;
@@ -20,6 +21,6 @@
   }
 
   &:hover {
-    box-shadow: 0 0 0 2px $mineshaft-color;
+    @include box-shadow(0 0 0 2px $mineshaft-color);
   }
 }

@@ -28,7 +28,7 @@
     justify-content: space-around;
     margin: 20px 0;
     padding: 20px;
-    background: rgba(35, 35, 35, 0.4);
+    background: opacity-color($mineshaft-color, 0.4);
 
     @include for-size(md) {
       flex-direction: row;

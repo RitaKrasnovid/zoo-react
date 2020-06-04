@@ -35,7 +35,7 @@
     border-radius: 4px;
 
     &:hover {
-      box-shadow: 0 0 0 2px $porcelain-color;
+      @include box-shadow(0 0 0 2px $porcelain-color);
     }
   }
 }
