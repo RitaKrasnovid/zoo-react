@@ -1,0 +1,41 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/breakpoints';
+@import '../../assets/styles/mixins';
+
+.news {
+  display: flex;
+  flex-direction: column;
+  @include fixed-background('../../assets/images/butterfly.jpg', 20px);
+
+  @include for-size(lg) {
+    @include fixed-background('../../assets/images/butterfly.jpg', 200px);
+  }
+
+  .hide {
+    display: none;
+  }
+
+  &__header {
+    color: $white-color;
+    font-size: 18px;
+    text-transform: uppercase;
+    background: $golden-grass;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &__button {
+    min-width: 130px;
+    height: 40px;
+    color: $white-color;
+    font-weight: bold;
+    background: $golden-grass;
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+      @include box-shadow(0 0 0 2px $porcelain-color);
+    }
+  }
+}

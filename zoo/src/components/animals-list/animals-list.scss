@@ -1,0 +1,12 @@
+@import '../../assets/styles/mixins';
+
+.animals-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include reset-list-style;
+
+  &__card {
+    margin: 10px;
+  }
+}

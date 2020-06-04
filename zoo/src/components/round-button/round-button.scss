@@ -1,0 +1,26 @@
+@import '../../assets/styles/colors';
+@import "../../assets/styles/mixins";
+
+.round-button {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: none;
+
+  &.bird {
+    background: url('../../assets/images/bird.png');
+  }
+  &.mammal {
+    background: url('../../assets/images/mammal.png');
+  }
+  &.fish {
+    background: url('../../assets/images/fish.png');
+  }
+  &.reptile {
+    background: url('../../assets/images/reptile.png');
+  }
+
+  &:hover {
+    @include box-shadow(0 0 0 2px $mineshaft-color);
+  }
+}

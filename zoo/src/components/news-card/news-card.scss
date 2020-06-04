@@ -1,0 +1,80 @@
+@import '../../assets/styles/colors';
+@import "../../assets/styles/functions";
+@import "../../assets/styles/mixins";
+@import '../../assets/styles/breakpoints';
+
+.news-card {
+  background: opacity-color($mineshaft-color, 0.7);
+  padding: 15px;
+  @include for-size(md) {
+    padding-right: 25px;
+  }
+
+  &__date {
+    color: $white-color;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    color: $golden-grass;
+    font-size: 15px;
+    text-transform: uppercase;
+    @include for-size(md) {
+      font-size: 30px;
+    }
+  }
+
+  &__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    @include box-shadow(0 0 0 10px opacity-color($mineshaft-color, 0.6));
+    margin: 30px 30px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include for-size(md) {
+      flex-direction: row;
+    }
+  }
+
+  &__showMoreLink {
+    font-size: 18px;
+    color: $golden-grass;
+    cursor: pointer;
+  }
+
+  &__description {
+    display: none;
+    color: $white-color;
+    font-size: 13px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    margin: 20px 0;
+    text-align: justify;
+    @include for-size(md) {
+      font-size: 20px;
+    }
+  }
+
+  &__hideLink {
+    display: none;
+    color: $golden-grass;
+    font-size: 18px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+}

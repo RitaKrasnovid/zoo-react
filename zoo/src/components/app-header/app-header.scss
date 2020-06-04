@@ -1,0 +1,77 @@
+@import '../../assets/styles/breakpoints';
+@import '../../assets/styles/colors';
+@import '../../assets/styles/mixins';
+
+.app-header {
+  background: $mineshaft-color;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    transition: all .2s;
+    @include for-size(md) {
+      padding: 15px 40px;
+    }
+    @include for-size(lg) {
+      padding: 15px 80px;
+    }
+  }
+
+  &__logo--nav-home {
+    color: $white-color;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: $nobel-color;
+    }
+  }
+
+  &__list {
+    @include reset-list-style;
+    display: none;
+    align-items: center;
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      margin-top: 20px;
+
+      @include for-size(lg) {
+        flex-direction: row;
+        margin-top: 0;
+      }
+    }
+  
+    @include for-size(lg) {
+      display: flex;
+    }
+  }
+
+  &__item {
+    margin-top: 15px;
+
+    @include for-size(lg) {
+      margin-top: 0;
+      margin-left: 15px;
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: $white-color;
+  
+    &:hover {
+      color: $nobel-color;
+    }
+  }
+
+  .toggle {
+    @include for-size(lg) {
+      display: none;
+    }
+  }
+}
