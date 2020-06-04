@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import animals from './animals';
 import news from './news';
 

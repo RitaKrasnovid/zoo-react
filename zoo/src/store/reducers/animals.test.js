@@ -1,6 +1,5 @@
 import animals, { getAnimal } from './animals';
 
-
 describe('Animal Reducer', () => {
   let state;
   let newState;
@@ -23,14 +22,9 @@ describe('Animal Reducer', () => {
     expect(newState.getAll.length).toBe(1);
   });
   
-  // it('get animal by id', () => {
-  //   const actionGetById = getAnimal(state[0].id);
+  it('get animal by id', () => {
+    const actionGetById = getAnimal({ getAll: state }, state[0].id);
 
-  //   const newOneAnimalState = animals(animals, actionGetById);
-
-  //   console.log(newOneAnimalState)
-
-  //   expect(newOneAnimalState).toBe(1);
-  // });
-  
+    expect(actionGetById.id).toBe(state[0].id);
+  });
 });
