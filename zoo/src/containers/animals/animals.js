@@ -22,6 +22,12 @@ class AnimalsPage extends Component {
     dispatch(getAllAnimals());
   }
 
+  filter = (type) => {
+    const { dispatch } = this.props;
+
+    dispatch(filterAnimalsByOrder(type))
+  }
+
   render() {
     const { animals, dispatch } = this.props;
 
@@ -29,20 +35,20 @@ class AnimalsPage extends Component {
       <div className="animals">
         <SectionLayout>
           <h1 className="animals__title">Animals of our ZOO</h1>
-          <header className="animals__sectionHeader">
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.BIRDS))}>
+          <header className="animals__section-header">
+            <div className="animals__header-button" onClick={() => this.filter(animalsOrder.BIRDS)}>
               <RoundButton name={"bird"} />
                 Birds
               </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.MAMMAL))}>
+            <div className="animals__header-button" onClick={() => this.filter(animalsOrder.MAMMAL)}>
               <RoundButton name={"mammal"} />
                 Mammals
               </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.FISH))}>
+            <div className="animals__header-button" onClick={() => this.filter(animalsOrder.FISH)}>
               <RoundButton name={"fish"} />
                 Fish
               </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.REPTILIA))}>
+            <div className="animals__header-button" onClick={() => this.filter(animalsOrder.REPTILIA)}>
               <RoundButton name={"reptile"} />
                 Reptiles
               </div>

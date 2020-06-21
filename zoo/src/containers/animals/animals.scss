@@ -22,7 +22,7 @@
     padding: 15px;
   }
 
-  &__sectionHeader {
+  &__section-header {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -35,7 +35,7 @@
     }
   }
 
-  &__headerButton {
+  &__header-button {
     cursor: pointer;
     color: $white-color;
     text-transform: uppercase;
