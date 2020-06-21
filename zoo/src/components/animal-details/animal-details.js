@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import SectionLayout from "../section-layout";
-import { getAllAnimals } from '../../store/actions';
+import { getAnimalById } from '../../store/actions';
 import { getAnimal } from '../../store/reducers/animals';
 
 import "./animal-details.scss";
@@ -10,9 +10,7 @@ class AnimalDetails extends Component {
   componentDidMount() {
     const { dispatch, id } = this.props;
 
-    dispatch(getAllAnimals());
-
-    getAnimal(id);
+    dispatch(getAnimalById(id));
   }
 
 
@@ -35,7 +33,7 @@ AnimalDetails.defaultProps = {
 };
 
 const mapStateToProps = (state, { id }) => ({
-  animal: getAnimal(state.animals, id),
+  animal: state.animals.getAnimal,
 });
 
 export default connect(mapStateToProps)(AnimalDetails);

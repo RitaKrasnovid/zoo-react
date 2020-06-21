@@ -8,6 +8,11 @@ const receiveAnimals = animals => ({
   animals,
 });
 
+const receiveAnimalDetails = animal => ({
+  type: types.RECEIVE_ANIMAL_DETAIL,
+  animal,
+});
+
 const receiveNews = news => ({
   type: types.RECEIVE_NEWS,
   news,
@@ -16,6 +21,12 @@ const receiveNews = news => ({
 export const getAllAnimals = () => dispatch => {
   apiService.getAllAnimals().then(data => {
     dispatch(receiveAnimals(data));
+  });
+}
+
+export const getAnimalById = id => dispatch => {
+  apiService.getAnimalById(id).then(data => {
+    dispatch(receiveAnimalDetails(data));
   });
 }
 

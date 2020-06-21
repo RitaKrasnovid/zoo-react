@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RECEIVE_ANIMALS } from '../../constants/actionsType';
+import { RECEIVE_ANIMALS, RECEIVE_ANIMAL_DETAIL } from '../../constants/actionsType';
 
 const initialState = {
   animals: [{
@@ -26,6 +26,20 @@ const getAll = (state = [], action) => {
   }
 };
 
+const getAnimal = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_ANIMAL_DETAIL:
+      const { animal } = action;
+
+      return {
+        name: animal.title,
+        ...animal,
+      };
+    default:
+      return state;
+  }
+};
+
 const animalsOrder = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_ANIMALS:
@@ -38,15 +52,8 @@ const animalsOrder = (state = initialState, action) => {
 export default combineReducers({
   getAll,
   animalsOrder,
+  getAnimal,
 })
-
-export const getAnimal = (state, id) => {
-  if(id) {
-    return state.getAll.find(element => element.id === id);
-  }
-
-  return {};
-}
 
 export const getAnimalByClass = (state) =>
   state.animalsOrder.map(order => order);
