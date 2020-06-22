@@ -54,6 +54,3 @@ export default combineReducers({
   animalsOrder,
   getAnimal,
 })
-
-export const getAnimalByClass = (state) =>
-  state.animalsOrder.map(order => order);

@@ -29,7 +29,7 @@ class AnimalsPage extends Component {
   }
 
   render() {
-    const { animals, dispatch } = this.props;
+    const { animals } = this.props;
 
     return (
       <div className="animals">

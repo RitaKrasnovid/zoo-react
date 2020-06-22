@@ -17,12 +17,8 @@ export default class App extends Component {
         <Router>
           <AppHeader />
           <Route path="/" component={HomePage} exact />
-          <Route path="/animals" component={AnimalsPage} exact/>
-          <Route path="/animals/:id"
-            render={({ match }) => {
-              return <AnimalDetails id={+match.params.id} />
-            }}
-          />
+          <Route path="/animals" component={AnimalsPage} exact />
+          <Route path="/animals/:id" component={AnimalDetails} exact />
           <Route path="/news" component={NewsPage} />
         </Router>
       </div>
