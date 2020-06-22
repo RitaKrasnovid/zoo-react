@@ -33,7 +33,7 @@ class AnimalsPage extends Component {
       const order = capitalizeFirstLetter(type);
 
       return (
-        <div className="animals__header-button" onClick={() => this.filter(order)}>
+        <div className="animals__header-button" onClick={() => this.filter(order)} key={type}>
           <RoundButton name={type} />
            {order}
         </div>
