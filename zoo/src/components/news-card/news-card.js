@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Image from "../image/";
+import YouTubeVideo from '../video-player';
 
 import "./news-card.scss";
 
 export default class NewsCard extends Component {
   state = {
     hide: false,
+    showVideo: false,
   };
 
   onShowMore = () => {
@@ -17,8 +19,9 @@ export default class NewsCard extends Component {
   };
 
   render() {
-    const { date, title, description, images } = this.props;
+    const { date, title, description, images, videoId } = this.props;
     const { hide } = this.state;
+    const showVideo = !!videoId;
 
     return (
       <div className="news-card">
@@ -34,6 +37,7 @@ export default class NewsCard extends Component {
           </div>
           <div className={`news-card__description ${hide ? "show" : ""}`}>
             {description}
+            <YouTubeVideo id={videoId} className={showVideo || "hide"} />
             <div
               className={`news-card__hideLink ${hide ? "show" : ""}`}
               onClick={this.onShowMore}
