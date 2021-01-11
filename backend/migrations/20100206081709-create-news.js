@@ -23,6 +23,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      videoId: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

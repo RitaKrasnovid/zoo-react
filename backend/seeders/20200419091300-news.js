@@ -2,6 +2,13 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('News', [
       {
+        title: 'Happy New year!',
+        description: 'We wish you more dancing in New Year!',
+        videoId: '-RAXa7lcR3o',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         title: 'Elbrus: the saving one leopard',
         description: `There are 103 Amur leopards left in the wild. The average area of the back of this
           animal is 0.4 m2, that is, the entire wild population of the Earth will fit into a small two-room
