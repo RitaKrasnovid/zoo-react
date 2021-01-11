@@ -23,6 +23,12 @@ export default class NewsCard extends Component {
     const { hide } = this.state;
     const showVideo = !!videoId;
 
+    let iframe;
+
+    if(showVideo) {
+      iframe = <YouTubeVideo id={videoId} />
+    }
+
     return (
       <div className="news-card">
         <div className="news-card__date">{date}</div>
@@ -37,7 +43,7 @@ export default class NewsCard extends Component {
           </div>
           <div className={`news-card__description ${hide ? "show" : ""}`}>
             {description}
-            <YouTubeVideo id={videoId} className={showVideo || "hide"} />
+            {iframe}
             <div
               className={`news-card__hideLink ${hide ? "show" : ""}`}
               onClick={this.onShowMore}

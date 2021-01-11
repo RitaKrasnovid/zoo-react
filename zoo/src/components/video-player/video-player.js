@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import YouTube from 'react-youtube';
 
-import "./video-player.scss";
-
 class YouTubeVideo extends Component {
   onReady(event) {
     event.target.pauseVideo();
   }
 
   render = () => {
-    const { id, className } = this.props;
+    const { id } = this.props;
     const opts = {
       width: '100%',
       playerVars: {
@@ -20,7 +18,7 @@ class YouTubeVideo extends Component {
     };
 
     return (
-      <div className={className}>
+      <div>
         <YouTube videoId={id} opts={opts} onReady={this.onReady} />
       </div>
     );
