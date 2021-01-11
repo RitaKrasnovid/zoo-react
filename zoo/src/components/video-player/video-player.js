@@ -11,7 +11,7 @@ class YouTubeVideo extends Component {
     const opts = {
       width: '100%',
       playerVars: {
-        autoplay: 1,
+        autoplay: 0,
         modestbranding: 1,
         showinfo: 0,
       },
