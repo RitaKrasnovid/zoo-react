@@ -1,6 +1,8 @@
 const passport = require('passport');
 const { animals: animalsController, news: newsController } = require('../controllers');
 
+const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
+
 module.exports = (app) => {
   app.get('/api/', (req, res) => res.status(200).send({
     message: 'API working',
@@ -19,13 +21,31 @@ module.exports = (app) => {
     scope: ['profile', "email"],
   }));
   
-  app.get('/api/auth/google/redirect', passport.authenticate('google'), (req,res) => {
-    res.send(req.user);
-    res.send("you reached the redirect URI");
-  });
+  app.get('/api/auth/google/redirect', passport.authenticate('google', {
+    successRedirect: CLIENT_HOME_PAGE_URL,
+    failureRedirect: "/api/auth/login/failed",
+  }));
 
   app.get("/api/auth/logout", (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect(CLIENT_HOME_PAGE_URL);
+  });
+
+  app.get("/api/auth/login/success", (req, res) => {
+    if (req.user) {
+      res.json({
+        success: true,
+        message: "user has successfully authenticated",
+        user: req.user,
+        cookies: req.cookies,
+      });
+    }
+  });
+
+  app.get("/api/auth/login/failed", (req, res) => {
+    res.status(401).json({
+      success: false,
+      message: "user failed to authenticate."
+    });
   });
 };

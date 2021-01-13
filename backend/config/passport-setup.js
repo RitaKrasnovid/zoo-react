@@ -43,7 +43,11 @@ passport.deserializeUser((id, done) => {
         $eq: id,
       },
     },
-  }).then(user => {
+  })
+  .then(user => {
     done(null, user);
+  })
+  .catch(e => {
+    done(new Error("Failed to deserialize an user"));
   });
 });
