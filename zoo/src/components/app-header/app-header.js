@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Hamburger from '../hamburger';
 import LoginButton from '../../components/login-button';
-
-import { Link } from 'react-router-dom';
+import { getAuthData } from '../../store/actions';
 
 import './app-header.scss';
 
@@ -32,10 +33,15 @@ const privateNavigations = [
   }
 ];
 
-export default class AppHeader extends Component {
+class AppHeader extends Component {
   state = {
     show: false,
-    error: null,
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(getAuthData());
   }
 
   onToggleNav = () => {
@@ -48,10 +54,10 @@ export default class AppHeader extends Component {
 
   render() {
     const { show } = this.state;
-    const { authenticated } = this.props;
+    const { isLoggedIn } = this.props;
     let navigations = publicNavigations;
 
-    if(authenticated) {
+    if(isLoggedIn) {
       navigations = [...publicNavigations, ...privateNavigations];
     }
 
@@ -78,7 +84,7 @@ export default class AppHeader extends Component {
           <ul className={`app-header__list ${show ? 'show' : ''}`}>
             {navigationLinks}
             <li className='app-header__item'>
-              <LoginButton authenticated={authenticated} />
+              <LoginButton authenticated={isLoggedIn} />
             </li>
           </ul>
           <Hamburger onToggleNav={this.onToggleNav} show={show} />
@@ -87,3 +93,9 @@ export default class AppHeader extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+});
+
+export default connect(mapStateToProps)(AppHeader);

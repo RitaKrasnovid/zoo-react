@@ -1,14 +1,23 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { getAuthData } from '../../store/actions';
 
 import './home.scss';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(getAuthData());
+  }
+
   render() {
     const { user } = this.props;
+
     let userName = '';
 
     if(user) {
-      userName = user.name; // TODO doesn't reactive update in the parent
+      userName = user.name;
     }
 
     return (
@@ -21,3 +30,9 @@ export default class HomePage extends Component {
     );
   }
 };
+
+const mapStateToProps = state => ({
+  user: state.auth.getUser,
+});
+
+export default connect(mapStateToProps)(HomePage);

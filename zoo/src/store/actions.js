@@ -1,7 +1,10 @@
 import ApiService from '../services/api-service';
+import ApiAuth from '../services/api-auth';
+
 import * as types from '../constants/actionsType';
 
 const apiService = new ApiService();
+const apiAuth = new ApiAuth();
 
 const receiveAnimals = animals => ({
   type: types.RECEIVE_ANIMALS,
@@ -16,6 +19,11 @@ const receiveAnimalDetails = animal => ({
 const receiveNews = news => ({
   type: types.RECEIVE_NEWS,
   news,
+});
+
+const receiveAuth = data => ({
+  type: types.RECEIVE_AUTH,
+  data,
 });
 
 export const getAllAnimals = () => dispatch => {
@@ -39,5 +47,11 @@ export const filterAnimalsByOrder = (order) => dispatch => {
 export const getAllNews = () => dispatch => {
   apiService.getAllNews().then(data => {
     dispatch(receiveNews(data));
+  });
+}
+
+export const getAuthData = () => dispatch => {
+  apiAuth.loginSuccess().then(data => {
+    dispatch(receiveAuth(data));
   });
 }
