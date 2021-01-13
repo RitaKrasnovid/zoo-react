@@ -48,8 +48,6 @@ export default class HomePage extends Component {
 
   render() {
     const { authenticated, user } = this.state;
-    console.log(user)
-
     const greeting = authenticated ? `${user.name}` : '';
 
     return (
