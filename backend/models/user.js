@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('Users', {
     name: DataTypes.STRING,
-    goggleId: DataTypes.STRING,
+    googleId: DataTypes.STRING,
   }, {});
 
   User.associate = function(models) {
