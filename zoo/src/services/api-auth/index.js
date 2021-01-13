@@ -1,8 +1,8 @@
 export default class ApiAuth {
-  _baseUrl = 'http://localhost:8080/api/auth/';
+  _baseUrl = 'http://localhost:8080/api/auth';
 
   async requestWrapper(path, params) {
-    const result = await fetch(`${this._baseUrl}${path}`, params);
+    const result = await fetch(`${this._baseUrl}/${path}`, params);
 
     if(!result.ok) {
       throw new Error('Failed to authenticate user');

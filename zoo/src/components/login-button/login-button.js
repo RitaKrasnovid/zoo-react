@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import ApiAuth from '../../services/api-auth';
 
 import "./login-button.scss";
+
+const apiAuth = new ApiAuth();
 
 export default class LoginButton extends Component {
   static propTypes = {
@@ -9,11 +12,11 @@ export default class LoginButton extends Component {
   };
 
   _handleSignInClick = () => {
-    window.open("http://localhost:8080/api/auth/google", "_self");
+    apiAuth.login();
   };
 
   _handleLogoutClick = () => {
-    window.open("http://localhost:8080/api/auth/logout", "_self");
+    apiAuth.logout();
     this.props.handleNotAuthenticated();
   };
 
