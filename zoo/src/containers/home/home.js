@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import ApiService from '../../services/api-service';
 import LoginButton from '../../components/login-button';
 
 import './home.scss';
-
-const apiService = new ApiService();
 
 export default class HomePage extends Component {
   state = {
