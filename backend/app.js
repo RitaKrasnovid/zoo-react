@@ -20,10 +20,22 @@ app.use(cookieSession({
   // milliseconds of a day
   maxAge: 24*60*60*1000,
   keys:[keys.COOKIE_KEY],
+  name: "session",
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// const authCheck = (req, res, next) => {
+//   if (!req.user) {
+//     res.status(401).json({
+//       authenticated: false,
+//       message: "user has not been authenticated"
+//     });
+//   } else {
+//     next();
+//   }
+// };
 
 require('./routers')(app);
 
