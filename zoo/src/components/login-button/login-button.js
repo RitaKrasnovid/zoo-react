@@ -25,7 +25,7 @@ export default class LoginButton extends Component {
     return (
       <div className="login">
         <button onClick={callback} className="login__button">
-          <img src="./images/google-icon.jpg" alt="google icon" className="login__image"/>
+          <img src="./images/google-icon.png" alt="google icon" className="login__image"/>
           <span className="login__text">{buttonText}</span>
         </button>
       </div>
