@@ -1,0 +1,28 @@
+@import '../../assets/styles/colors';
+
+.login {
+  &__button {
+    display: flex;
+    align-items: center;
+    background: $white-color;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    min-height: 30px;
+
+    &:hover {
+      background: $nobel-color;
+    }
+  }
+
+  &__image {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__text {
+    font-size: 16px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}

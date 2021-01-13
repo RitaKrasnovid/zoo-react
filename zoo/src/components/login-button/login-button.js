@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
+import "./login-button.scss";
+
 export default class LoginButton extends Component {
   static propTypes = {
     authenticated: PropTypes.bool.isRequired,
@@ -17,14 +19,15 @@ export default class LoginButton extends Component {
 
   render() {
     const { authenticated } = this.props;
+    const callback = authenticated ? this._handleLogoutClick : this._handleSignInClick;
+    const buttonText = authenticated ? 'Logout' : 'Login';
 
     return (
-      <div>
-        {authenticated ? (
-          <button onClick={this._handleLogoutClick}>Logout</button>
-        ) : (
-          <button onClick={this._handleSignInClick}>Login with Google</button>
-        )}
+      <div className="login">
+        <button onClick={callback} className="login__button">
+          <img src="./images/google-icon.jpg" alt="google icon" className="login__image"/>
+          <span className="login__text">{buttonText}</span>
+        </button>
       </div>
     );
   }
