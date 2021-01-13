@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Hamburger from '../hamburger';
+import LoginButton from '../../components/login-button';
 
 import { Link } from 'react-router-dom';
 
@@ -27,6 +28,9 @@ const navigations = [
 export default class AppHeader extends Component {
   state = {
     show: false,
+    user: {},
+    error: null,
+    authenticated: false,
   }
 
   onToggleNav = () => {
@@ -37,9 +41,41 @@ export default class AppHeader extends Component {
     });
   };
 
+  componentDidMount() {
+    fetch("http://localhost:8080/api/auth/login/success", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      }
+    })
+      .then(response => {
+        if (response.status === 200) return response.json();
+        throw new Error("failed to authenticate user");
+      })
+      .then(responseJson => {
+        this.setState({
+          authenticated: true,
+          user: responseJson.user,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          authenticated: false,
+          error: "Failed to authenticate user",
+        });
+      });
+  }
+
+  _handleNotAuthenticated = () => {
+    this.setState({ authenticated: false });
+  };
+
   render() {
-    const { show } = this.state;
-    
+    const { show, authenticated } = this.state;
+
     const navigationLinks = navigations.map(nav => {
       const { name, path } = nav;
 
@@ -62,6 +98,12 @@ export default class AppHeader extends Component {
           </div>
           <ul className={`app-header__list ${show ? 'show' : ''}`}>
             {navigationLinks}
+            <li className='app-header__item'>
+              <LoginButton
+                authenticated={authenticated}
+                handleNotAuthenticated={this._handleNotAuthenticated}
+              />
+            </li>
           </ul>
           <Hamburger onToggleNav={this.onToggleNav} show={show} />
         </nav>
