@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { getAuthData } from '../../store/actions';
+import SectionLayout from "../../components/section-layout";
 
 import './home.scss';
 
@@ -22,10 +23,13 @@ class HomePage extends Component {
 
     return (
       <div className="home">
-        <h1 className="home__greeting">
-          {userName} Welcome to Super ZOO
-        </h1>
-        <img alt="tiger" src="./images/tiger.jpg" className="home__image"/>
+        <SectionLayout className="home__section">
+          <h1 className="home__greeting">
+            {userName}
+            <div>Welcome to Super ZOO</div>
+          </h1>
+          <img alt="tiger" src="./images/tiger.jpg" className="home__image"/>
+        </SectionLayout>
       </div>
     );
   }

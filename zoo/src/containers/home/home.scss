@@ -1,5 +1,6 @@
 @import '../../assets/styles/breakpoints';
 @import '../../assets/styles/colors';
+@import '../../assets/styles/mixins';
 
 .home {
   width: 100%;
@@ -8,11 +9,25 @@
   align-items: center;
   flex-direction: column;
 
+  @include fixed-background('../../assets/images/forest.jpg', 20px);
+
+  @include for-size(lg) {
+    @include fixed-background('../../assets/images/forest.jpg', 125px);
+  }
+
   &__greeting {
     color: $mineshaft-color;
+    background: $golden-grass;
+    padding: 15px;
+    text-align: center;
   }
 
   &__image {
-    flex: 1 1 auto;
+    border: 5px solid $mineshaft-color;
+  }
+
+  .sectionLayout {
+    display: flex;
+    justify-content: center;
   }
 }
