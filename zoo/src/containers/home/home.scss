@@ -16,14 +16,15 @@
   }
 
   &__greeting {
-    color: $mineshaft-color;
-    background: $golden-grass;
+    color: $white-color;
+    background: $forest-green-color;
     padding: 15px;
     text-align: center;
   }
 
   &__image {
-    border: 5px solid $mineshaft-color;
+    border-radius: 5px;
+    @include box-shadow(0 0 8px $nobel-color);
   }
 
   .sectionLayout {
