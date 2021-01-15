@@ -42,7 +42,7 @@ export default class NewsCard extends Component {
           <div>{editCard}</div>
         </div>
         <div className="news-card__content">
-          <Image src={images[0]} className="news-card__image" />
+          <Image src={images && images.length ? images[0] : null} className="news-card__image" />
           <div
             className={`news-card__showMoreLink ${hide ? "hide" : ""}`}
             onClick={this.onShowMore}
