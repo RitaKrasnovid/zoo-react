@@ -83,6 +83,7 @@
   &__button-group {
     font-size: 14px;
     color: $mineshaft-color;
+    display: flex;
     &--edit,
     &--delete {
       padding: 5px 15px;
