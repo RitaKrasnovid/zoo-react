@@ -17,6 +17,7 @@ module.exports = (app) => {
 
   app.get('/api/news/', newsController.list);
   app.post('/api/news/', newsController.create);
+  app.delete('/api/news/:id', newsController.deleteNewsById);
 
   app.get('/api/auth/google', passport.authenticate('google', {
     scope: ['profile', "email"],
