@@ -50,9 +50,7 @@
     font-size: 14px;
 
     &:hover {
-      background: $nobel-color;
-      color: $mineshaft-color;
-      font-weight: bold;
+      @include box-shadow(0 0 0 2px $porcelain-color);
     }
   }
 }
