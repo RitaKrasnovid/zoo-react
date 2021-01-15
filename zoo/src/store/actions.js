@@ -26,6 +26,11 @@ const addNews = news => ({
   news,
 });
 
+const deleteNews = news => ({
+  type: types.DELETE_NEWS,
+  news,
+});
+
 const receiveAuth = data => ({
   type: types.RECEIVE_AUTH,
   data,
@@ -58,6 +63,12 @@ export const getAllNews = () => dispatch => {
 export const createNews = body => dispatch => {
   apiService.createNews(body).then(data => {
     dispatch(addNews(data));
+  });
+}
+
+export const removeNews = id => dispatch => {
+  apiService.deleteNews(id).then(data => {
+    dispatch(deleteNews(data));
   });
 }
 

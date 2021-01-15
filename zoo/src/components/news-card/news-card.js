@@ -17,21 +17,20 @@ export default class NewsCard extends Component {
   };
 
   render() {
-    const {
-      date,
-      title,
-      description,
-      images,
-      editable,
-     } = this.props;
+    const { date, id, title, description, images, editable, deleteNews } = this.props;
     const { hide } = this.state;
 
     let editCard;
+
     if(editable) {
       editCard =
         <div className="news-card__button-group">
-          <button className="news-card__button-group--edit">Edit</button>
-          <button className="news-card__button-group--delete">Delete</button>
+          <button className="news-card__button-group--edit">
+            Edit
+          </button>
+          <button className="news-card__button-group--delete" onClick={() => deleteNews(id)}>
+            Delete
+          </button>
         </div>
     }
 

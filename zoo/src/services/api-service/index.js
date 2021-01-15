@@ -27,6 +27,18 @@ export default class ApiService {
     return response.json();
   }
 
+  async deleteData(path) {
+    const result = await fetch(`${this._baseUrl}${path}`, {
+      method: 'DELETE',
+    });
+
+    if(!result.ok) {
+      throw new Error('Something wrong');
+    }
+
+    return await result.json();
+  }
+
   getAllAnimals() {
     return this.getResourse('animals');
   }
@@ -45,5 +57,9 @@ export default class ApiService {
 
   createNews(body) {
     return this.postData('news', body);
+  }
+
+  deleteNews(id) {
+    return this.deleteData(`news/${id}`);
   }
 }

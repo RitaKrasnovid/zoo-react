@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllNews, getAuthData } from '../../store/actions';
+import { getAllNews, getAuthData, removeNews } from '../../store/actions';
 
 import SectionLayout from "../../components/section-layout";
 import NewsList from "../../components/news-list";
@@ -28,6 +28,12 @@ class NewsPage extends Component {
 
     dispatch(getAllNews());
     dispatch(getAuthData());
+  }
+
+  async deleteNews(id) {
+    const { dispatch } = this.props;
+
+    await dispatch(removeNews(id));
   }
 
   render() {
@@ -57,7 +63,7 @@ class NewsPage extends Component {
             Articles
             {addButton}
           </header>
-          <NewsList news={renderedNews} editable={logginedAdmin}/>
+          <NewsList news={renderedNews} editable={logginedAdmin} deleteNews={id => this.deleteNews(id)}/>
           <button onClick={this.loadMore} className={classButton}>Load more</button>
         </SectionLayout>
       </div>
