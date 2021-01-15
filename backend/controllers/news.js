@@ -13,6 +13,9 @@ const create = (req, res) => {
 
 const list = (req, res, next) => News
   .findAll({
+    order: [
+      ['createdAt', 'DESC'],
+    ],
     include: [{
       model: Images,
       as: 'images',
