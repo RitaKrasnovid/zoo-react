@@ -11,6 +11,22 @@ export default class ApiService {
     return await result.json();
   }
 
+  async postData(path, data = {}) {
+    const response = await fetch(`${this._baseUrl}${path}`, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    return response.json();
+  }
+
   getAllAnimals() {
     return this.getResourse('animals');
   }
@@ -25,5 +41,9 @@ export default class ApiService {
 
   getAnimalById(id) {
     return this.getResourse(`animals/details/${id}`);
+  }
+
+  createNews(body) {
+    return this.postData('news', body);
   }
 }

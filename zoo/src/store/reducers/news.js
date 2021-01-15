@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RECEIVE_NEWS } from '../../constants/actionsType';
+import { RECEIVE_NEWS, ADD_NEWS } from '../../constants/actionsType';
 
 const getAll = (state = [], action) => {
   switch (action.type) {
@@ -10,6 +10,10 @@ const getAll = (state = [], action) => {
           ...news,
         };
       });
+
+    case ADD_NEWS:
+      return state.concat([action.news]);
+
     default:
       return state;
   }

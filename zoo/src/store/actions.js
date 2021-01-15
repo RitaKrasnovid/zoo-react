@@ -21,6 +21,11 @@ const receiveNews = news => ({
   news,
 });
 
+const addNews = news => ({
+  type: types.ADD_NEWS,
+  news,
+});
+
 const receiveAuth = data => ({
   type: types.RECEIVE_AUTH,
   data,
@@ -47,6 +52,12 @@ export const filterAnimalsByOrder = (order) => dispatch => {
 export const getAllNews = () => dispatch => {
   apiService.getAllNews().then(data => {
     dispatch(receiveNews(data));
+  });
+}
+
+export const createNews = body => dispatch => {
+  apiService.createNews(body).then(data => {
+    dispatch(addNews(data));
   });
 }
 

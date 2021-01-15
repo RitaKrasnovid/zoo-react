@@ -16,6 +16,7 @@ module.exports = (app) => {
   app.get('/api/animals/:value', animalsController.filterByNameContainsValue);
 
   app.get('/api/news/', newsController.getMainNews);
+  app.post('/api/news/', newsController.create);
 
   app.get('/api/auth/google', passport.authenticate('google', {
     scope: ['profile', "email"],

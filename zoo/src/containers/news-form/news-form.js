@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SectionLayout from "../../components/section-layout";
+import { createNews } from '../../store/actions';
 
 import './news-form.scss';
-export default class NewsForm extends Component {
+class NewsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,8 +23,12 @@ export default class NewsForm extends Component {
     this.setState({[name]: value});
   }
 
-  handleSubmit(event) {
-    console.log('submit', event.target);
+  async handleSubmit() {
+    const { dispatch, history } = this.props;
+
+    await dispatch(createNews(this.state));
+
+    history.push('/news');
   }
 
   render() {
@@ -54,7 +60,7 @@ export default class NewsForm extends Component {
             </label>
 
             <button 
-              onClick={this.handleSubmit} 
+              onClick={this.handleSubmit}
               type="button"
               className="news-form__save-button"
             >
@@ -66,3 +72,9 @@ export default class NewsForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  news: {},
+});
+
+export default connect(mapStateToProps)(NewsForm);
