@@ -33,6 +33,7 @@ class NewsPage extends Component {
   render() {
     const { maxListSize } = this.state;
     const { news, user, isLoggedIn } = this.props;
+    const logginedAdmin = isLoggedIn && user.role === 'admin';
 
     const renderedNews = news.slice(0, maxListSize);
     let classButton = 'news__button';
@@ -42,7 +43,7 @@ class NewsPage extends Component {
       classButton += ' hide';
     }
 
-    if(isLoggedIn && user.role === 'admin') {
+    if(logginedAdmin) {
       addButton =
         <Link className="news__create-button" to='/news_form'>
           Add article
@@ -56,7 +57,7 @@ class NewsPage extends Component {
             Articles
             {addButton}
           </header>
-          <NewsList news={renderedNews} />
+          <NewsList news={renderedNews} editable={logginedAdmin}/>
           <button onClick={this.loadMore} className={classButton}>Load more</button>
         </SectionLayout>
       </div>
