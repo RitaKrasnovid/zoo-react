@@ -3,6 +3,12 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const keys = require("./keys");
 const { Users } = require("../models");
 
+const ADMIN_ROLE_PATTERN = 'lineate.com';
+const ROLE_TITLE = Object.freeze({
+  ADMIN: 'admin',
+  VISITOR: 'visitor',
+});
+
 passport.use(
   new GoogleStrategy(
     {
@@ -22,10 +28,15 @@ passport.use(
         if(currentUser){
           done(null, currentUser);
         } else {
+          const splittedEmail = profile.emails[0].value.split('@');
+          const isAdmin = splittedEmail[1] === ADMIN_ROLE_PATTERN;
+
           Users.create({
             googleId: profile.id,
             name: profile.displayName,
-          }).then(newUser => { done(null, newUser) })
+            role: isAdmin ? ROLE_TITLE.ADMIN : ROLE_TITLE.VISITOR,
+          })
+          .then(newUser => { done(null, newUser) })
         }
       })
     }

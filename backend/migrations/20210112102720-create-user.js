@@ -9,9 +9,15 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       googleId: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

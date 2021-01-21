@@ -54,10 +54,10 @@ class AppHeader extends Component {
 
   render() {
     const { show } = this.state;
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, user } = this.props;
     let navigations = publicNavigations;
 
-    if(isLoggedIn) {
+    if(isLoggedIn && user.role === 'admin') {
       navigations = [...publicNavigations, ...privateNavigations];
     }
 
@@ -96,6 +96,7 @@ class AppHeader extends Component {
 
 const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,
+  user: state.auth.getUser,
 });
 
 export default connect(mapStateToProps)(AppHeader);
