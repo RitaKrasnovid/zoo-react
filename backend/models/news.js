@@ -14,6 +14,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 2000],
       },
     },
+    videoId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [0, 150],
+      },
+    },
   }, {});
 
   News.associate = (models) => {
