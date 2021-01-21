@@ -45,7 +45,7 @@ const getMainNews = (req, res, next) => News
 const getById = (req, res, next) => {
   const { id } = req.params;
 
-  News.findAll({
+  News.findOne({
     where: {
       id: {
         $eq: id,
@@ -74,10 +74,30 @@ const deleteNewsById = (req, res, next) => {
     .catch((error) => next(error));
 };
 
+const editById = (req, res) => News
+  .update(
+    { where: 
+      { id: { $eq: req.params.id } },
+    },
+    {
+      title: req.body.title,
+      description: req.body.description,
+    },
+    {
+      include: [{
+        model: Images,
+        as: 'images',
+        imageId: req.body.imageId,
+      }],
+    })
+    .then(result => res.status(200).send(result))
+    .catch(error => res.status(400).send(error));
+
 module.exports = {
   create,
   list,
   getById,
   getMainNews,
   deleteNewsById,
+  editById,
 };
