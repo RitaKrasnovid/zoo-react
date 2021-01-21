@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Hamburger from '../hamburger';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Hamburger from '../hamburger';
+import LoginButton from '../../components/login-button';
+import { getAuthData } from '../../store/actions';
 
 import './app-header.scss';
 
-const navigations = [
+const publicNavigations = [
   {
     name: 'Home',
     path: '/',
@@ -21,12 +23,25 @@ const navigations = [
   {
     name: 'About Zoo',
     path: '/about'
+  },
+];
+
+const privateNavigations = [
+  {
+    name: 'News Form',
+    path: '/news_form',
   }
 ];
 
-export default class AppHeader extends Component {
+class AppHeader extends Component {
   state = {
     show: false,
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(getAuthData());
   }
 
   onToggleNav = () => {
@@ -39,7 +54,13 @@ export default class AppHeader extends Component {
 
   render() {
     const { show } = this.state;
-    
+    const { isLoggedIn } = this.props;
+    let navigations = publicNavigations;
+
+    if(isLoggedIn) {
+      navigations = [...publicNavigations, ...privateNavigations];
+    }
+
     const navigationLinks = navigations.map(nav => {
       const { name, path } = nav;
 
@@ -62,6 +83,9 @@ export default class AppHeader extends Component {
           </div>
           <ul className={`app-header__list ${show ? 'show' : ''}`}>
             {navigationLinks}
+            <li className='app-header__item'>
+              <LoginButton authenticated={isLoggedIn} />
+            </li>
           </ul>
           <Hamburger onToggleNav={this.onToggleNav} show={show} />
         </nav>
@@ -69,3 +93,9 @@ export default class AppHeader extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+});
+
+export default connect(mapStateToProps)(AppHeader);
