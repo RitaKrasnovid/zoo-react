@@ -36,6 +36,12 @@ class NewsPage extends Component {
     await dispatch(removeNews(id));
   }
 
+  async editNews(id) {
+    const { history } = this.props;
+
+    history.push(`/news_form/${id}`);
+  }
+
   render() {
     const { maxListSize } = this.state;
     const { news, user, isLoggedIn } = this.props;
@@ -63,7 +69,12 @@ class NewsPage extends Component {
             Articles
             {addButton}
           </header>
-          <NewsList news={renderedNews} editable={logginedAdmin} deleteNews={id => this.deleteNews(id)}/>
+          <NewsList
+            news={renderedNews}
+            editable={logginedAdmin}
+            deleteNews={id => this.deleteNews(id)}
+            editNews={id => this.editNews(id)}
+          />
           <button onClick={this.loadMore} className={classButton}>Load more</button>
         </SectionLayout>
       </div>

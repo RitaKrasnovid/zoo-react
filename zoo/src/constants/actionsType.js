@@ -2,7 +2,9 @@ export const RECEIVE_ANIMALS = 'RECEIVE_ANIMALS';
 export const RECEIVE_ANIMAL_DETAIL = 'RECEIVE_ANIMAL_DETAIL';
 
 export const RECEIVE_NEWS = 'RECEIVE_NEWS';
+export const RECEIVE_NEWS_DETAIL = 'RECEIVE_NEWS_DETAIL';
 export const ADD_NEWS = 'ADD_NEWS';
 export const DELETE_NEWS = 'DELETE_NEWS';
+export const EDIT_NEWS = 'EDIT_NEWS';
 
 export const RECEIVE_AUTH = 'RECEIVE_AUTH';

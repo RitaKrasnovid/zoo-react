@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SectionLayout from "../../components/section-layout";
-import { createNews } from '../../store/actions';
+import { createNews, getNewsById, updateNews } from '../../store/actions';
 
 import './news-form.scss';
 class NewsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
+      title: props.oneNews.title,
+      description: props.oneNews.description,
+      id: props.oneNews.id,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
+    const { dispatch, match } = this.props;
+    const {
+      params: { id },
+    } = match;
+
+    if (id) {
+      dispatch(getNewsById(id));
+    }
   }
 
   handleChange(event) {
@@ -25,14 +36,21 @@ class NewsForm extends Component {
 
   async handleSubmit() {
     const { dispatch, history } = this.props;
+    const { id } = this.state;
 
-    await dispatch(createNews(this.state));
+    if(id) {
+      await dispatch(updateNews(this.state));
+    } else {
+      await dispatch(createNews(this.state));
+    }
 
     history.push('/news');
   }
 
   render() {
-    const { title, description } = this.state;
+    const { title, description, id } = this.state;
+    const { oneNews } = this.props;
+
     return (
       <div className="news-form">
         <SectionLayout>
@@ -59,7 +77,7 @@ class NewsForm extends Component {
               />
             </label>
 
-            <button 
+            <button
               onClick={this.handleSubmit}
               type="button"
               className="news-form__save-button"
@@ -74,7 +92,7 @@ class NewsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: {},
+  oneNews: state.news.getNewsById,
 });
 
 export default connect(mapStateToProps)(NewsForm);

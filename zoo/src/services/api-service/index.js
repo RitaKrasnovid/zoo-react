@@ -27,6 +27,22 @@ export default class ApiService {
     return response.json();
   }
 
+  async putData(path, data = {}) {
+    const response = await fetch(`${this._baseUrl}${path}`, {
+      method: 'PUT',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    return response.json();
+  }
+
   async deleteData(path) {
     const result = await fetch(`${this._baseUrl}${path}`, {
       method: 'DELETE',
@@ -47,6 +63,10 @@ export default class ApiService {
     return this.getResourse('news');
   }
 
+  getNewsById(id) {
+    return this.getResourse(`news/${id}`);
+  }
+
   getAnimalsByOrder(order = '') {
     return this.getResourse(`animals/${order}`);
   }
@@ -61,5 +81,9 @@ export default class ApiService {
 
   deleteNews(id) {
     return this.deleteData(`news/${id}`);
+  }
+
+  updateNews(body) {
+    return this.updateNews(`news/${body.id}`, body);
   }
 }
