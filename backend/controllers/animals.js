@@ -39,6 +39,26 @@ const filterByOrder = (req, res, next) => {
     .catch(error => next(error));
 };
 
+const getAnimalById = (req, res, next) => {
+  const { id } = req.params;
+
+  Animals.findOne({
+    include: [{
+      model: Images,
+      as: 'images',
+    }],
+    where: {
+      id: {
+        $eq: id,
+      },
+    },
+  })
+    .then((result) => {
+      res.status(200).send(result);
+    })
+    .catch(error => next(error));
+};
+
 const filterByNameContainsValue = (req, res, next) => {
   const value = req.params.value.toLowerCase();
 
@@ -60,4 +80,5 @@ module.exports = {
   list,
   filterByOrder,
   filterByNameContainsValue,
+  getAnimalById,
 };
