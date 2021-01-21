@@ -5,17 +5,12 @@ import { createNews, getNewsById, updateNews } from '../../store/actions';
 
 import './news-form.scss';
 class NewsForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: props.oneNews.title,
-      description: props.oneNews.description,
-      id: props.oneNews.id,
-    };
+  state = {
+    title: this.props.oneNews.title,
+    description: this.props.oneNews.description,
+    id: this.props.oneNews.id,
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
   componentDidMount() {
     const { dispatch, match } = this.props;
     const {
@@ -27,14 +22,14 @@ class NewsForm extends Component {
     }
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const { name } = event.target;
     const { value } = event.target;
 
     this.setState({[name]: value});
   }
 
-  async handleSubmit() {
+  handleSubmit = async () => {
     const { dispatch, history } = this.props;
     const { id } = this.state;
 
