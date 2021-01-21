@@ -19,6 +19,10 @@ export default class ApiService {
     return this.getResourse('news');
   }
 
+  getCurrentNews(limit = 3) {
+    return this.getResourse(`news/${limit}`);
+  }
+
   getAnimalsByOrder(order = '') {
     return this.getResourse(`animals/${order}`);
   }

@@ -26,7 +26,7 @@ const getMainNews = (req, res, next) => News
     order: [
       ['createdAt', 'DESC'],
     ],
-    limit: 3,
+    limit: req.params.limit,
     include: [{
       model: Images,
       as: 'images',
