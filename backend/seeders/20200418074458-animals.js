@@ -26,6 +26,7 @@ module.exports = {
         in ancient mythology and folklore and continues to be depicted in modern films and literature, appearing on many
         flags, coats of arms and as mascots for sporting teams. The tiger is the national animal of India, Bangladesh,
         Malaysia and South Korea.`,
+        videoId: '_UbDeqPdUek',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -53,6 +54,7 @@ module.exports = {
         as vulnerable to extinction, and has been extirpated from many parts of its former range. Giraffes are still found
         in numerous national parks and game reserves but estimates as of 2016 indicate that there are approximately 97,500
         members of Giraffa in the wild. More than 1,600 were kept in zoos in 2010.`,
+        videoId: 'bR7RPT_Caj4',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -71,6 +73,7 @@ module.exports = {
         Mauritius and Silver Springs State Park in Florida. Macaques can be a threat to wildlife conservation as well as to
         human well-being via carrying transmittable and fatal diseases. Currently, invasive species of macaques are handled
         with several control methods.`,
+        videoId: 'NiiidKMEmcA',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -88,6 +91,7 @@ module.exports = {
         Hummingbirds have the highest mass-specific metabolic rate of any homeothermic animal. To conserve energy when food is scarce,
         and nightly when not foraging, they can go into torpor, a state similar to hibernation, slowing their metabolic rate
         to 1/15th of its normal rate.`,
+        videoId: '17x_nCq-mvI',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -111,6 +115,7 @@ module.exports = {
         about 240 species arranged in 35 genera. Almost 20 species are threatened with extinction due to loss of habitat or habitat
         fragmentation, with one, the Bermuda flicker, being extinct and a further two possibly being so.
         A group of woodpeckers is called a "descent."`,
+        videoId: 'wdmt6KrgeR8',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -172,6 +177,7 @@ module.exports = {
         species and age. All crocodiles are tropical species that, unlike alligators, are very sensitive to cold. They separated
         from other crocodilians during the Eocene epoch, about 55 million years ago. Many species are at the risk of extinction,
         some being classified as critically endangered.`,
+        videoId: 'aa9xYPrcovI',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

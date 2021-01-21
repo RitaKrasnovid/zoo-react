@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 15000],
       },
     },
+    videoId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   }, {});
 
   Animal.associate = (models) => {
