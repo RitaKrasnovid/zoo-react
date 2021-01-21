@@ -8,12 +8,11 @@ import RoundButton from "../../components/round-button";
 
 import "./animals.scss";
 
-const animalsOrder = {
-  BIRDS: 'Bird',
-  MAMMAL: 'Mammal',
-  FISH: 'Fish',
-  REPTILIA: 'Reptilia',
-};
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+const animalOrders = ['bird', 'mammal', 'fish', 'reptile'];
 
 class AnimalsPage extends Component {
   componentDidMount() {
@@ -22,30 +21,31 @@ class AnimalsPage extends Component {
     dispatch(getAllAnimals());
   }
 
+  filter = (type) => {
+    const { dispatch } = this.props;
+
+    dispatch(filterAnimalsByOrder(type))
+  }
+
   render() {
-    const { animals, dispatch } = this.props;
+    const { animals } = this.props;
+    const headerButtons = animalOrders.map(type => {
+      const order = capitalizeFirstLetter(type);
+
+      return (
+        <div className="animals__header-button" onClick={() => this.filter(order)} key={type}>
+          <RoundButton name={type} />
+           {order}
+        </div>
+      );
+    });
 
     return (
       <div className="animals">
         <SectionLayout>
           <h1 className="animals__title">Animals of our ZOO</h1>
-          <header className="animals__sectionHeader">
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.BIRDS))}>
-              <RoundButton name={"bird"} />
-                Birds
-              </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.MAMMAL))}>
-              <RoundButton name={"mammal"} />
-                Mammals
-              </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.FISH))}>
-              <RoundButton name={"fish"} />
-                Fish
-              </div>
-            <div className="animals__headerButton" onClick={() => dispatch(filterAnimalsByOrder(animalsOrder.REPTILIA))}>
-              <RoundButton name={"reptile"} />
-                Reptiles
-              </div>
+          <header className="animals__section-header">
+            {headerButtons}
           </header>
           <AnimalsList animals={animals} />
         </SectionLayout>

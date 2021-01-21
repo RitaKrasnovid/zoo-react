@@ -22,4 +22,8 @@ export default class ApiService {
   getAnimalsByOrder(order = '') {
     return this.getResourse(`animals/${order}`);
   }
+
+  getAnimalById(id) {
+    return this.getResourse(`animals/details/${id}`);
+  }
 }
