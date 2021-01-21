@@ -50,6 +50,12 @@ export const getAllNews = () => dispatch => {
   });
 }
 
+export const getCurrentNews = limit => dispatch => {
+  apiService.getCurrentNews(limit).then(data => {
+    dispatch(receiveNews(data));
+  });
+}
+
 export const getAuthData = () => dispatch => {
   apiAuth.loginSuccess().then(data => {
     dispatch(receiveAuth(data));

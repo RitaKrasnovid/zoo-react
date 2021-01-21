@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getAllNews } from '../../store/actions';
+import { getCurrentNews } from '../../store/actions';
 
 import SectionLayout from "../../components/section-layout";
 import NewsList from "../../components/news-list";
@@ -14,18 +14,20 @@ class NewsPage extends Component {
     maxListSize: DEFAULT_LIST_SIZE,
   };
 
-  loadMore = () => {
-    this.setState(({ maxListSize }) => {
-      return {
-        maxListSize: maxListSize + DEFAULT_LIST_SIZE, // TODO lazy loading from backend
-      }
+  loadMore = async () => {
+    const maxNewsListSize = this.props.news.length - 1;
+
+    await this.setState({
+      maxListSize: maxNewsListSize + DEFAULT_LIST_SIZE,
     });
+
+    this.props.dispatch(getCurrentNews(this.state.maxListSize + 1));
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
 
-    dispatch(getAllNews());
+    dispatch(getCurrentNews(this.state.maxListSize + 1));
   }
 
   render() {
