@@ -15,11 +15,13 @@ class NewsPage extends Component {
   };
 
   loadMore = async () => {
+    const maxNewsListSize = this.props.news.length - 1;
+
     await this.setState({
-      maxListSize: this.props.news.length + DEFAULT_LIST_SIZE,
+      maxListSize: maxNewsListSize + DEFAULT_LIST_SIZE,
     });
 
-    this.props.dispatch(getCurrentNews(this.state.maxListSize));
+    this.props.dispatch(getCurrentNews(this.state.maxListSize + 1));
   };
 
   componentDidMount() {
