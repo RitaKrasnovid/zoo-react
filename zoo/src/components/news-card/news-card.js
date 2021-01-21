@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Image from "../image/";
+import YouTubeVideo from '../video-player';
 
 import "./news-card.scss";
 
 export default class NewsCard extends Component {
   state = {
     hide: false,
+    showVideo: false,
   };
 
   onShowMore = () => {
@@ -17,8 +19,15 @@ export default class NewsCard extends Component {
   };
 
   render() {
-    const { date, id, title, description, images, editable, deleteNews, editNews } = this.props;
+    const { date, id, title, description, images, videoId, editable, deleteNews, editNews } = this.props;
     const { hide } = this.state;
+    const showVideo = !!videoId;
+
+    let iframe;
+
+    if(showVideo) {
+      iframe = <YouTubeVideo id={videoId} />
+    }
 
     let editCard;
 
@@ -51,6 +60,7 @@ export default class NewsCard extends Component {
           </div>
           <div className={`news-card__description ${hide ? "show" : ""}`}>
             {description}
+            {iframe}
             <div
               className={`news-card__hideLink ${hide ? "show" : ""}`}
               onClick={this.onShowMore}
