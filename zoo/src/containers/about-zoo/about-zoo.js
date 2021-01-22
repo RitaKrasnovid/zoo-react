@@ -9,7 +9,8 @@ class AboutZooPage extends Component {
     city : 'Moscow',
     temp: '',
     clouds: '',
-    wind: ''
+    wind: '',
+    weather: [],
   };
 
   async componentDidMount() {
@@ -19,18 +20,29 @@ class AboutZooPage extends Component {
       temp: result.main.temp,
       clouds: result.clouds.all,
       wind: result.wind.speed,
+      weather: result.weather,
     });
   };
 
   render() {
-    const { temp, clouds, wind } = this.state;
+    const { temp, clouds, wind, weather } = this.state;
+    const elementsOfWeather = weather.map(item => {
+      const { id } = item;
+  
+      return (
+        <div key={id}>{item.description}</div>
+      );
+    });
+
     return (
       <div className="about">
         <SectionLayout className="home__section">
           <h1 className="about__title">Weather in super zoo is now</h1>
+          {elementsOfWeather}
           <div>temperature: {temp}℃</div>
           <div>clouds: {clouds}%</div>
           <div>wind: {wind} m/s </div>
+          
         </SectionLayout>
       </div>
     );
