@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import SectionLayout from "../../components/section-layout";
@@ -6,7 +6,7 @@ import { createNews, getNewsById, updateNews } from '../../store/actions';
 
 import './news-form.scss';
 let NewsForm = props => {
-  const { handleSubmit, match, load, pristine, reset, updateNews, createNews } = props;
+  const { handleSubmit, match, load, reset, updateNews, createNews } = props;
   const { params: { id } } = match;
 
   if(id) {
