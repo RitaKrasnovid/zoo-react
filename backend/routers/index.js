@@ -20,6 +20,9 @@ module.exports = (app) => {
   app.post('/api/news/', newsController.create);
   app.delete('/api/news/:id', newsController.deleteNewsById);
   app.put('/api/news/:id', newsController.editById);
+  app.get('/api/news', newsController.list);
+
+  app.get('/api/news/:limit', newsController.getMainNews);
 
   app.get('/api/auth/google', passport.authenticate('google', {
     scope: ['profile', "email"],

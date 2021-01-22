@@ -31,8 +31,10 @@ const list = (req, res, next) =>
 
 const getMainNews = (req, res, next) => News
   .findAll({
-    order: [['createdAt', 'DESC']],
-    limit: 3,
+    order: [
+      ['createdAt', 'DESC'],
+    ],
+    limit: req.params.limit,
     include: [{
         model: Images,
         as: 'images',

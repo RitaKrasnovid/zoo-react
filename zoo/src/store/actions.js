@@ -93,6 +93,11 @@ export const updateNews = body => dispatch => {
     dispatch(editNews(data));
   });
 }
+export const getCurrentNews = limit => dispatch => {
+  apiService.getCurrentNews(limit).then(data => {
+    dispatch(receiveNews(data));
+  });
+}
 
 export const getAuthData = () => dispatch => {
   apiAuth.loginSuccess().then(data => {
