@@ -7,7 +7,7 @@ import normalizeId from '../../helpers/convert-url-to-id';
 
 import './news-form.scss';
 let NewsForm = props => {
-  const { handleSubmit, match, load, reset, updateNews, createNews } = props;
+  const { handleSubmit, match, load, reset, updateNews, createNews, history } = props;
   const { params: { id } } = match;
 
   if(id) {
@@ -15,8 +15,6 @@ let NewsForm = props => {
   }
 
   const saveOrUpdate = async (data) => {
-    const { history } = props;
-
     if(id) {
       await updateNews(data);
     } else {
@@ -24,10 +22,15 @@ let NewsForm = props => {
     }
 
     history.push('/news');
-  }
+  };
+
+  const resetData = () => {
+    reset();
+    history.push('/news');
+  };
 
   const cancelButton =
-    (<button type="button" className="news-form__button--cancel" onClick={reset}>
+    (<button type="button" className="news-form__button--cancel" onClick={resetData}>
       Cancel
     </button>);
 
