@@ -7,7 +7,12 @@ const SESSION = {
   COOKIE_KEY: "thisappisawesomecookiekey"
 };
 
+const WEATHER_TOKEN = {
+  API_KEY: 'd3ef87d6b4edb67233f0f4ebc08bf094',
+}
+
 module.exports = {
   ...GOOGLE_TOKEN,
   ...SESSION,
+  ...WEATHER_TOKEN,
 };

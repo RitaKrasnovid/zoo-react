@@ -1,5 +1,9 @@
 const passport = require('passport');
-const { animals: animalsController, news: newsController } = require('../controllers');
+const { 
+  animals: animalsController,
+  news: newsController,
+  weather: weatherController,
+} = require('../controllers');
 
 const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
@@ -53,4 +57,6 @@ module.exports = (app) => {
       message: "user failed to authenticate."
     });
   });
+
+  app.get('/api/weather/:city', weatherController.getByCity);
 };

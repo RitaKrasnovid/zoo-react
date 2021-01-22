@@ -90,4 +90,8 @@ export default class ApiService {
   updateNews(body) {
     return this.putData(`news/${body.id}`, body);
   }
+
+  getWeather(param) {
+    return this.getResourse(`weather/${param}`);
+  }
 }
