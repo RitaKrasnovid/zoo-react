@@ -31,7 +31,8 @@ class App extends Component {
           <Route path="/animals" component={AnimalsPage} exact />
           <Route path="/animals/:id" component={AnimalDetails} exact />
           <Route path="/news" component={NewsPage} />
-          <GuardedRoute path='/news_form' component={NewsForm} auth={isLoggedIn} />
+          <GuardedRoute path='/news_form' component={NewsForm} auth={isLoggedIn} exact />
+          <GuardedRoute path='/news_form/:id' component={NewsForm} auth={isLoggedIn} exact />
         </Router>
       </div>
     );
