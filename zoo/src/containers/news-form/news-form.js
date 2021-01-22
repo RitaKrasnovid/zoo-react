@@ -1,93 +1,88 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import SectionLayout from "../../components/section-layout";
 import { createNews, getNewsById, updateNews } from '../../store/actions';
 
 import './news-form.scss';
-class NewsForm extends Component {
-  state = {
-    title: this.props.oneNews.title,
-    description: this.props.oneNews.description,
-    id: this.props.oneNews.id,
-  };
+let NewsForm = props => {
+  const { handleSubmit, match, load, pristine, reset, updateNews, createNews } = props;
+  const { params: { id } } = match;
 
-  componentDidMount() {
-    const { dispatch, match } = this.props;
-    const {
-      params: { id },
-    } = match;
-
-    if (id) {
-      dispatch(getNewsById(id));
-    }
+  if(id) {
+    load(id);
   }
 
-  handleChange = (event) => {
-    const { name } = event.target;
-    const { value } = event.target;
-
-    this.setState({[name]: value});
-  }
-
-  handleSubmit = async () => {
-    const { dispatch, history } = this.props;
-    const { id } = this.state;
+  const saveOrUpdate = async (data) => {
+    const { history } = props;
 
     if(id) {
-      await dispatch(updateNews(this.state));
+      await updateNews(data);
     } else {
-      await dispatch(createNews(this.state));
+      await createNews(data);
     }
 
     history.push('/news');
   }
 
-  render() {
-    const { title, description, id } = this.state;
-    const { oneNews } = this.props;
+  const cancelButton =
+    (<button type="button" className="news-form__button--cancel" onClick={reset}>
+      Cancel
+    </button>);
+
+  const showCancelButton = id ? cancelButton : null;
 
     return (
       <div className="news-form">
         <SectionLayout>
         <header className="news-form__header">News Form</header>
-          <form className="news-form__form">
+          <form className="news-form__form" onSubmit={handleSubmit(val => saveOrUpdate(val))}>
             <label className="news-form__label">
               Title
-              <input
+              <Field
+                component="input"
                 type="text"
-                value={title}
                 name="title"
-                onChange={this.handleChange}
                 className="news-form__input"
               />
             </label>
 
             <label className="news-form__label">
               Description:
-              <textarea
-                value={description}
+              <Field
+                component="textarea"
                 name="description"
-                onChange={this.handleChange}
                 className="news-form__textarea"
               />
             </label>
 
             <button
-              onClick={this.handleSubmit}
-              type="button"
-              className="news-form__save-button"
+              type="submit"
+              className="news-form__button--save"
             >
               Save
             </button>
+            {showCancelButton}
           </form>
         </SectionLayout>
       </div>
     );
-  }
 }
 
-const mapStateToProps = state => ({
-  oneNews: state.news.getNewsById,
-});
+NewsForm = reduxForm({
+  form: 'newsForm',
+  enableReinitialize : true,
+})(NewsForm)
 
-export default connect(mapStateToProps)(NewsForm);
+NewsForm = connect(
+  state => ({
+    initialValues: state.news.getNewsById,
+  }),
+  { 
+    load: getNewsById,
+    createNews,
+    updateNews,
+  },
+)(NewsForm)
+
+export default NewsForm;

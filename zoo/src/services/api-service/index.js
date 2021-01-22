@@ -84,6 +84,6 @@ export default class ApiService {
   }
 
   updateNews(body) {
-    return this.updateNews(`news/${body.id}`, body);
+    return this.putData(`news/${body.id}`, body);
   }
 }

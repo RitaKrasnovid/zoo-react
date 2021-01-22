@@ -74,24 +74,23 @@ const deleteNewsById = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-const editById = (req, res) => News
-  .update(
-    { where: 
-      { id: { $eq: req.params.id } },
-    },
-    {
-      title: req.body.title,
-      description: req.body.description,
-    },
+const editById = (req, res) => {
+  const { id } = req.params;
+  const { title, description, videoId, imageId } = req.body;
+
+  News.update(
+    { title, description, videoId },
+    { returning: true, where: { id } },
     {
       include: [{
         model: Images,
         as: 'images',
-        imageId: req.body.imageId,
+        imageId,
       }],
     })
     .then(result => res.status(200).send(result))
     .catch(error => res.status(400).send(error));
+}
 
 module.exports = {
   create,
