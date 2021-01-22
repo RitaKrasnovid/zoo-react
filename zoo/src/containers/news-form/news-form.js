@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import SectionLayout from "../../components/section-layout";
 import { createNews, getNewsById, updateNews } from '../../store/actions';
+import normalizeId from '../../helpers/convert-url-to-id';
 
 import './news-form.scss';
 let NewsForm = props => {
@@ -53,6 +54,16 @@ let NewsForm = props => {
                 component="textarea"
                 name="description"
                 className="news-form__textarea"
+              />
+            </label>
+
+            <label className="news-form__label">
+              Video link (copy link from youtybe)
+              <Field
+                component="input"
+                name="videoId"
+                className="news-form__input"
+                normalize={normalizeId}
               />
             </label>
 
