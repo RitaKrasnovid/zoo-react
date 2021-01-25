@@ -1,5 +1,9 @@
 const passport = require('passport');
-const { animals: animalsController, news: newsController } = require('../controllers');
+const { 
+  animals: animalsController,
+  news: newsController,
+  weather: weatherController,
+} = require('../controllers');
 
 const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
@@ -15,7 +19,12 @@ module.exports = (app) => {
   app.get('/api/animals/details/:id', animalsController.getAnimalById);
   app.get('/api/animals/:value', animalsController.filterByNameContainsValue);
 
-  app.get('/api/news/', newsController.getMainNews);
+  app.get('/api/news', newsController.list);
+  app.get('/api/news/:id', newsController.getById);
+  app.post('/api/news/', newsController.create);
+  app.delete('/api/news/:id', newsController.deleteNewsById);
+  app.put('/api/news/:id', newsController.editById);
+  app.get('/api/current_news/:limit', newsController.getMainNews);
 
   app.get('/api/auth/google', passport.authenticate('google', {
     scope: ['profile', "email"],
@@ -48,4 +57,6 @@ module.exports = (app) => {
       message: "user failed to authenticate."
     });
   });
+
+  app.get('/api/weather/:city', weatherController.getByCity);
 };

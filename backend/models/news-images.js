@@ -2,11 +2,11 @@ module.exports = (sequelize, DataTypes) => {
   const NewsImages = sequelize.define('NewsImages', {
     newsId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     imageId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   }, {});
 
