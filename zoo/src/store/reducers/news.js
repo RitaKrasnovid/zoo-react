@@ -16,14 +16,14 @@ const getAll = (state = [], action) => {
 
     case DELETE_NEWS:
       return state.filter(news => news.id !== action.news.id);
-    
+
     case EDIT_NEWS:
       return state.map(news => {
         if(news.id === action.news.id) {
           return {
-             ...news,
-             title: action.data.title,
-             description: action.data.description,
+            ...news,
+            title: action.news.title,
+            description: action.news.description,
           }
         } else return news;
       })
