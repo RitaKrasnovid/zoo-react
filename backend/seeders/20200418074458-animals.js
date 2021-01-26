@@ -63,8 +63,8 @@ module.exports = {
         order: 'Mammal',
         family: 'Cercopithecidae',
         description: `The macaques constitute a genus (Macaca) of gregarious Old World monkeys of the subfamily Cercopithecinae.
-        The 23 species of macaques inhabit ranges throughout Asia, North Africa, and (in one instance) Gibraltar. Macaques 
-        are principally frugivorous, although their diet also includes seeds, leaves, flowers, and tree bark. Some species, 
+        The 23 species of macaques inhabit ranges throughout Asia, North Africa, and (in one instance) Gibraltar. Macaques
+        are principally frugivorous, although their diet also includes seeds, leaves, flowers, and tree bark. Some species,
         such as the crab-eating macaque, subsist on a diet of invertebrates and occasionally small vertebrates. On average,
         southern pig-tailed macaques in Malaysia eat about 70 large rats each per year. All macaque social groups are
         matriarchal, arranged around dominant females.
@@ -151,7 +151,7 @@ module.exports = {
       },
       {
         title: 'Crocodile',
-        order: 'Reptilia',
+        order: 'Reptile',
         family: 'Crocodylidae',
         description: `Crocodiles (subfamily Crocodylinae) or true crocodiles are large semiaquatic reptiles that live throughout
         the tropics in Africa, Asia, the Americas and Australia. Crocodylinae, all of whose members are considered true crocodiles,
