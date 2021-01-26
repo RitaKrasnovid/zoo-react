@@ -1,19 +1,31 @@
-const { News, Images } = require('../models');
+const { News, Images, NewsImages } = require('../models');
 
-const create = (req, res) => {
-  return News
-  .create({
-    title: req.body.title,
-    description: req.body.description,
-  }, {
-      include: [{
-        model: Images,
-        as: 'images',
-        imageId: req.body.imageId,
-    }],
-  })
-    .then(result => res.status(201).send(result))
-    .catch(error => res.status(400).send(error));
+const create = async (req, res) => {
+  const { title, description, videoId, file } = req.body;
+
+  const news = await News.create({
+    title,
+    description,
+    videoId,
+  });
+
+  if(file) {
+    const image = await Images.create({
+      title: file.name,
+      data: file.data,
+    });
+
+    await NewsImages.create({newsId: news.id, imageId: image.id});
+  }
+
+  return News.findOne({
+    where: { id: news.id },
+    include: {
+      model: Images,
+      as: 'images',
+    },
+  }).then(result => res.status(201).send(result))
+    .catch(error => res.status(400).send(error))
 };
 
 const list = (req, res, next) =>
@@ -36,10 +48,9 @@ const getMainNews = (req, res, next) => News
     ],
     limit: req.params.limit,
     include: [{
-        model: Images,
-        as: 'images',
-        required: false,
-      }],
+      model: Images,
+      as: 'images',
+    }],
   })
     .then(result => res.status(200).send(result))
     .catch(error => next(error));
@@ -76,22 +87,31 @@ const deleteNewsById = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-const editById = (req, res) => {
+const editById = async (req, res) => {
   const { id } = req.params;
-  const { title, description, videoId, imageId } = req.body;
+  const { title, description, videoId, file } = req.body;
 
-  News.update(
-    { title, description, videoId },
-    { returning: true, where: { id } },
-    {
-      include: [{
-        model: Images,
-        as: 'images',
-        imageId,
-      }],
-    })
-    .then(result => res.status(200).send(result))
-    .catch(error => res.status(400).send(error));
+  const image = await Images.create({
+    title: file.name,
+    data: file.data,
+  });
+
+  await NewsImages.update({ newsId: id, imageId: image.id }, { returning: true, where: { newsId: id } });
+
+  await News.update({
+    title,
+    description,
+    videoId,
+  }, { returning: true, where: { id } });
+
+  return News.findOne({
+    where: { id },
+    include: {
+      model: Images,
+      as: 'images',
+    },
+  }).then(result => res.status(200).send(result))
+    .catch(error => res.status(400).send(error))
 }
 
 module.exports = {

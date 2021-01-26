@@ -67,7 +67,7 @@ export default class ApiService {
     return this.getResourse(`news/${id}`);
   }
 
-  async getCurrentNews(limit = 3) {
+  getCurrentNews(limit = 3) {
     return this.getResourse(`current_news/${limit}`);
   }
 

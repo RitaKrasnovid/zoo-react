@@ -5,7 +5,8 @@
     "database": "zoo-react",
     "host": "localhost",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "development": {
     "username": "postgres",
@@ -13,7 +14,8 @@
     "database": "zoo-react",
     "host": "localhost",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "test": {
     "username": "postgres",
@@ -29,6 +31,7 @@
     "database": "zoo_prod",
     "host": "localhost",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   }
 }

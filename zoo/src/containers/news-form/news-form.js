@@ -4,8 +4,10 @@ import { Field, reduxForm } from 'redux-form';
 import SectionLayout from "../../components/section-layout";
 import { createNews, getNewsById, updateNews } from '../../store/actions';
 import normalizeId from '../../helpers/convert-url-to-id';
+import InputFile from './input-file';
 
 import './news-form.scss';
+
 let NewsForm = props => {
   const { handleSubmit, match, load, reset, updateNews, createNews, history } = props;
   const { params: { id } } = match;
@@ -15,13 +17,16 @@ let NewsForm = props => {
   }
 
   const saveOrUpdate = async (data) => {
+    let result;
     if(id) {
-      await updateNews(data);
+      result = await updateNews(data);
     } else {
-      await createNews(data);
+      result = await createNews(data);
     }
 
-    history.push('/news');
+    if(result) {
+      history.push('/news');
+    }
   };
 
   const resetData = () => {
@@ -70,6 +75,15 @@ let NewsForm = props => {
               />
             </label>
 
+            <label className="news-form__label">
+              Upload news Images
+              <Field
+                component={InputFile}
+                name="file"
+                className="news-form__input"
+              />
+            </label>
+
             <button
               type="submit"
               className="news-form__button--save"
@@ -92,7 +106,7 @@ NewsForm = connect(
   state => ({
     initialValues: state.news.getNewsById,
   }),
-  { 
+  {
     load: getNewsById,
     createNews,
     updateNews,

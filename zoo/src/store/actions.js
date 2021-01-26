@@ -77,8 +77,10 @@ export const getNewsById = id => dispatch => {
 }
 
 export const createNews = body => dispatch => {
-  apiService.createNews(body).then(data => {
+  return apiService.createNews(body).then(data => {
     dispatch(addNews(data));
+
+    return data;
   });
 }
 
@@ -89,8 +91,10 @@ export const removeNews = id => dispatch => {
 }
 
 export const updateNews = body => dispatch => {
-  apiService.updateNews(body).then(data => {
+  return apiService.updateNews(body).then(data => {
     dispatch(editNews(data));
+
+    return data;
   });
 }
 export const getCurrentNews = limit => dispatch => {
