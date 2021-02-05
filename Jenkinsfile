@@ -1,32 +1,14 @@
 pipeline {
-  agent any
-
-  tools {nodejs "node"}
-
+  agent {
+    docker {
+      image 'node:6-alpine'
+      args '-p 3000:3000'
+    }
+  }
   stages {
-    stage('Init UI') {
+    stage('Build') {
       steps {
-        git 'https://github.com/RitaKrasnovid/zoo-react.git'
-        dir("./zoo") {
-          bat 'npm install'
-          bat 'npm run test'
-        }
-      }
-    }
-    stage('Build UI') {
-      steps {
-        git 'https://github.com/RitaKrasnovid/zoo-react.git'
-        dir("./zoo") {
-          bat 'npm run build'
-        }
-      }
-    }
-    stage('Init Backend') {
-      steps {
-        git 'https://github.com/RitaKrasnovid/zoo-react.git'
-        dir("./backend") {
-          bat 'npm install'
-        }
+        sh 'npm install'
       }
     }
   }
