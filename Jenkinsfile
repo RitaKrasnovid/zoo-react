@@ -6,9 +6,18 @@ pipeline {
     }
   }
   stages {
-    stage('Build') {
+    stage('Build UI') {
       steps {
-        sh 'npm install'
+        dir("./zoo") {
+          sh 'npm install'
+        }
+      }
+    }
+    stage('Build Backend') {
+      steps {
+        dir("./backend") {
+          sh 'npm install'
+        }
       }
     }
   }
