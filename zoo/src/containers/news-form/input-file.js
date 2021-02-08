@@ -38,6 +38,6 @@ export default ({
     <input type="file" id="file"
       onChange={handleChange(onChange)} onBlur={handleChange(onBlur)}
       {...inputProps} {...props} />
-      <img id="image" width="200" height="150" />
+      <img id="image" width="200" height="150" alt="" />
   </div>
 );
