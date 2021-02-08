@@ -22,9 +22,10 @@ describe('Animal Reducer', () => {
     expect(newState.getAll.length).toBe(1);
   });
 
-  // it('get animal by id', () => {
-  //   const actionGetById = getAnimal({ getAll: state }, state[0].id);
+  it('get animal by id', () => {
+    const action = { type: "RECEIVE_ANIMAL_DETAIL", animal: state[0] };
 
-  //   expect(actionGetById.id).toBe(state[0].id);
-  // });
+    newState = animals(animals, action);
+    expect(newState.getAnimal.id).toBe(state[0].id);
+  });
 });
