@@ -5,6 +5,9 @@ pipeline {
       args '-p 3000:3000'
     }
   }
+  environment {
+    CI = 'true'
+  }
   stages {
     stage('Build UI') {
       steps {
@@ -17,6 +20,13 @@ pipeline {
       steps {
         dir("./backend") {
           sh 'npm install'
+        }
+      }
+    }
+    stage('Test') {
+      steps {
+        dir("./zoo") {
+          sh 'npm run test'
         }
       }
     }
