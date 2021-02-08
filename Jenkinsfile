@@ -12,7 +12,8 @@ pipeline {
     stage('Build') {
       steps {
         sh "chmod +x -R ${env.WORKSPACE}"
-        sh './jenkins/scripts/build.sh'
+        sh './jenkins/scripts/build-ui.sh'
+        sh './jenkins/scripts/build-backend.sh'
       }
     }
     stage('Test') {
