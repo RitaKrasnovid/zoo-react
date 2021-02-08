@@ -25,8 +25,6 @@ pipeline {
       steps {
         sh './jenkins/scripts/deliver-backend.sh'
         sh './jenkins/scripts/deliver-ui.sh'
-        input message: 'Finished using the web site? (Click "Proceed" to continue)'
-        sh './jenkins/scripts/kill.sh'
       }
     }
   }

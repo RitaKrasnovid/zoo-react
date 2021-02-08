@@ -21,8 +21,9 @@ then
   npm run start:dev &
   sleep 1
   echo $! > .pidfile
-  echo $(cat .pidfile)
   set +x
+  set -x
+  kill $(cat .pidfile)
 else
   echo >&2 "command failed with exit status $ret"
   exit 1
