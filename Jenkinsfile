@@ -11,23 +11,12 @@ pipeline {
   stages {
     stage('Build UI') {
       steps {
-        dir("./zoo") {
-          sh 'npm install'
-        }
-      }
-    }
-    stage('Build Backend') {
-      steps {
-        dir("./backend") {
-          sh 'npm install'
-        }
+        sh './jenkins/scripts/build.sh'
       }
     }
     stage('Test') {
       steps {
-        dir("./zoo") {
-          sh '../jenkins/scripts/test.sh'
-        }
+        sh './jenkins/scripts/test.sh'
       }
     }
   }
