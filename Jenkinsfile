@@ -9,8 +9,9 @@ pipeline {
     CI = 'true'
   }
   stages {
-    stage('Build UI') {
+    stage('Build') {
       steps {
+        sh "chmod +x -R ${env.WORKSPACE}"
         sh './jenkins/scripts/build.sh'
       }
     }
