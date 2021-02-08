@@ -26,7 +26,7 @@ pipeline {
     stage('Test') {
       steps {
         dir("./zoo") {
-          sh 'npm run test'
+          sh './jenkins/scripts/test.sh'
         }
       }
     }
