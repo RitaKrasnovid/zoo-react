@@ -25,3 +25,4 @@ then
 else
   echo >&2 "command failed with exit status $ret"
   exit 1
+fi
