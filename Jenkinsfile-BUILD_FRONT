@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Deployment') {
       steps {
-        withAWS(region:'eu-central-1',credentials:'<AWS-Staging-Jenkins-Credential-ID>') {
+        withAWS(region:'eu-central-1', credentials:'AWS-Staging-Jenkins-Credential-ID') {
           s3Delete(bucket: 'zoo.react.ui', path:'**/*')
           s3Upload(bucket: 'zoo.react.ui', workingDir:'./zoo/build', includePathPattern:'**/*');
         }
