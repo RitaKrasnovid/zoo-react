@@ -12,7 +12,7 @@ pipeline {
     stage('Build') {
       steps {
         dir('./zoo') {
-          echo 'The following "npm" command build'
+          echo 'The following "npm" command initalize packages'
           sh 'npm install'
           echo 'Finished'
         }
@@ -29,8 +29,11 @@ pipeline {
     }
     stage('Deliver') {
       steps {
-        sh "chmod +x -R ${env.WORKSPACE}"
-        sh '../jenkins/scripts/deliver-ui.sh'
+        dir('./zoo') {
+          echo 'The following "npm" command build'
+          sh 'npm run build'
+          echo 'Finished'
+        }
       }
     }
   }
