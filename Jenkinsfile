@@ -29,10 +29,8 @@ pipeline {
     }
     stage('Deliver') {
       steps {
-        dir('./zoo') {
-          sh "chmod +x -R ${env.WORKSPACE}"
-          sh '../jenkins/scripts/deliver-ui.sh'
-        }
+        sh "chmod +x -R ${env.WORKSPACE}"
+        sh '../jenkins/scripts/deliver-ui.sh'
       }
     }
   }
