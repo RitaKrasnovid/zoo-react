@@ -32,7 +32,7 @@ pipeline {
         dir('./zoo') {
           echo 'The following "npm" command build'
           sh 'npm run build'
-          sh 'aws s3 sync build/ s3://zoo.react.ui'
+          sh 'npm run deploy'
           echo 'Finished'
         }
       }
