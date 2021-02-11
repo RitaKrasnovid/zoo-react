@@ -34,7 +34,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "aws s3 sync build/ s3://zoo.react.ui",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject"
